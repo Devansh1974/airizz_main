@@ -166,7 +166,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={toggleMobileMenu}
-          className="md:hidden p-2 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+          className="lg:hidden p-2 text-zinc-400 hover:text-white transition-colors cursor-pointer"
         >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
         </button>
@@ -176,7 +176,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            className="fixed inset-0 top-[73px] bg-black/95 z-45 md:hidden flex flex-col p-6 overflow-y-auto w-full border-t border-white/5"
+            className="fixed inset-0 top-[73px] bg-black/95 z-45 lg:hidden flex flex-col p-6 overflow-y-auto w-full border-t border-white/5"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}

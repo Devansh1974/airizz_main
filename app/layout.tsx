@@ -66,8 +66,12 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${bricolageGrotesque.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground font-sans selection:bg-brand-cyan/30 selection:text-white">
+      <body 
+        className="min-h-full flex flex-col bg-background text-foreground font-sans selection:bg-brand-cyan/30 selection:text-white"
+        suppressHydrationWarning
+      >
         <ScrollProvider>
           <Navbar />
           <main className="flex-grow pt-[73px] md:pt-[88px] flex flex-col">
