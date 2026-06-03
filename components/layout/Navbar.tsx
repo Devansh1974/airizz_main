@@ -145,6 +145,9 @@ export default function Navbar() {
           <Link href="/case-studies" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
             Case Studies
           </Link>
+          <Link href="/careers" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+            Careers
+          </Link>
         </nav>
 
         {/* Action Button */}
