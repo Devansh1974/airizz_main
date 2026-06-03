@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #030303;
+  --color-foreground: #ffffff;
+  --color-brand-cyan: #00f3ff;
+  --color-brand-purple: #bd00ff;
+  --color-dark-card: #0a0a0c;
+  --color-dark-card-hover: #121217;
+  --color-muted-text: #a1a1aa;
+  
+  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), monospace;
+  
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-shimmer: shimmer 2.5s infinite linear;
+
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+:root {
+  --background: #030303;
+  --foreground: #ffffff;
+  color-scheme: dark;
+}
+
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #1f1f23;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2f2f35;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(10, 10, 12, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-interactive {
+  background: rgba(10, 10, 12, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-interactive:hover {
+  background: rgba(10, 10, 12, 0.75);
+  border-color: rgba(0, 243, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 243, 255, 0.05);
+}
+
+/* Glow Effect */
+.glow-cyan {
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+.glow-purple {
+  text-shadow: 0 0 10px rgba(189, 0, 255, 0.5);
+}
+
+/* Grid Background */
+.grid-background {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+/* Dot Background */
+.dot-background {
+  background-size: 24px 24px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+}
+
+/* Shimmer Button */
+.shimmer-button {
+  background: linear-gradient(90deg, #00f3ff, #bd00ff, #00f3ff);
+  background-size: 200% auto;
+  transition: 0.5s;
+}
+.shimmer-button:hover {
+  background-position: right center;
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+}
+
+/* Lenis scroll styles */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
