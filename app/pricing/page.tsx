@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Check, HelpCircle, ChevronDown } from "lucide-react";
+import { Check, ChevronDown, Sparkles, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import CTAButton from "@/components/shared/CTAButton";
 import FadeUp from "@/components/animations/FadeUp";
@@ -9,61 +9,79 @@ import StaggerChildren from "@/components/animations/StaggerChildren";
 
 const pricingTiers = [
   {
-    name: "Workflow Automations",
-    starting: "₹45,000 / month",
-    description: "Best for connecting APIs, automating daily spreadsheets, and building WhatsApp alerts.",
+    name: "Starter",
+    price: "₹50K–₹2L",
+    forWho: "Single service, defined scope, SMBs",
     features: [
-      "Custom Zapier / Make.com flows",
-      "Spreadsheet-to-invoice automation",
-      "WhatsApp dispatch alerts",
-      "API failure monitoring",
-      "Bi-weekly system updates"
-    ]
+      "Initial systems audit",
+      "Scoped project delivery",
+      "Comprehensive system documentation",
+      "30-day post-delivery support"
+    ],
+    ctaText: "Get Starter Proposal →",
+    popular: false
   },
   {
-    name: "AI & Custom LLM Core",
-    starting: "₹90,000 / month",
-    description: "Best for law panels, wealth managers, and firms looking to query private SOP archives.",
+    name: "Growth Partnership",
+    price: "₹2L–₹10L",
+    forWho: "Multi-service, ongoing retainer, scaling companies",
     features: [
-      "Secure Vector DB chunking",
-      "RAG document search widgets",
-      "Custom prompt guardrails",
-      "24/7 client auto-responders",
-      "PII redaction validation",
-      "Weekly analytics dashboards"
-    ]
+      "Everything in Starter",
+      "Multi-service data integrations",
+      "Dedicated Point of Contact (POC)",
+      "Continuous monthly workflow optimisation"
+    ],
+    ctaText: "Get Growth Proposal →",
+    popular: true
   },
   {
-    name: "Enterprise Architecture",
-    starting: "Custom Quote",
-    description: "Best for factories, multi-branch distributors, and high-frequency background queues.",
+    name: "Enterprise",
+    price: "Custom",
+    forWho: "Full AI transformation, dedicated team pod",
     features: [
-      "On-premise / private cloud deploy",
-      "Real-time event ETL streaming",
-      "Custom Looker Studio BI panels",
-      "Dedicated developer support SLA",
-      "99.9% uptime guarantees",
-      "Regulatory audit compliance"
-    ]
+      "Everything in Growth",
+      "Custom generative AI agents",
+      "Strict Service Level Agreements (SLAs)",
+      "Dedicated engineering pod",
+      "Executive performance reporting"
+    ],
+    ctaText: "Talk to Enterprise Team →",
+    popular: false
   }
 ];
 
 const faqs = [
   {
-    q: "How do you ensure data security with internal documents?",
-    a: "We configure isolated vector namespaces and localized enterprise servers. Your operational SOPs, contracts, and emails are never mixed with public training sets or shared APIs."
+    q: "What's included in the free strategy audit?",
+    a: "A 30-minute call where we review your current systems, identify your top 3 automation opportunities, and give you a prioritised roadmap. No sales pitch — just actionable intelligence."
   },
   {
-    q: "What happens if an API connection breaks after deployment?",
-    a: "All our workflows are engineered with automatic retry-queues, fallback paths, and alert triggers. Retainer plans include continuous background check auditing and maintenance."
+    q: "Do you offer payment in installments?",
+    a: "Yes. For engagements above ₹1L, we offer a 50/50 split: 50% at kickoff, 50% on delivery. For retainer engagements, monthly billing is standard."
   },
   {
-    q: "Can you connect with legacy software like Tally or custom local ERPs?",
-    a: "Yes! We build bridge scripts that export local file schedules (like XML/CSV) and ingest them into cloud databases via secure webhooks, bridging legacy setups with modern AI dashboards."
+    q: "How long does a typical engagement last?",
+    a: "Starter projects: 3–6 weeks. Growth partnerships: ongoing (minimum 3-month commitment). Enterprise engagements: scoped individually."
   },
   {
-    q: "How long does a typical workflow project take?",
-    a: "Standard API automations and dashboard connections are deployed in 2 to 4 weeks. Bespoke multi-agent RAG search engines typically require 6 to 8 weeks of prompt staging."
+    q: "Do you work with early-stage startups?",
+    a: "Yes, if there's a clear automation or integration challenge. We're most effective when there's an existing operation to optimise — even if it's small."
+  },
+  {
+    q: "What industries do you serve?",
+    a: "Manufacturing, logistics, legal services, finance, healthcare, retail, and traditional SMEs across India. We're expanding to SaaS and edtech in 2026."
+  },
+  {
+    q: "Do I need a technical team to work with you?",
+    a: "No. We handle all technical implementation. You describe the problem and approve the outputs — we handle everything in between."
+  },
+  {
+    q: "What if my requirements change mid-project?",
+    a: "We use a change request process. Small changes are absorbed; larger scope changes are costed transparently before any additional work begins."
+  },
+  {
+    q: "Can I see examples of past work?",
+    a: "Yes — visit our Case Studies page. We share anonymised case studies with full metrics for all client engagements."
   }
 ];
 
@@ -75,19 +93,19 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="bg-black text-white py-16 md:py-24">
+    <div className="bg-[#040d1a] text-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-20">
           <FadeUp delay={0.1}>
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan">Clear Models</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan font-mono">Pricing Options</span>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mt-3">Pragmatic Engagement Plans</h1>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mt-3">Transparent Investment</h1>
           </FadeUp>
           <FadeUp delay={0.3}>
-            <p className="text-zinc-500 text-sm md:text-base mt-4 max-w-xl mx-auto">
-              Select an ongoing integration plan or book a consultation to map custom project scopes.
+            <p className="text-zinc-400 text-sm md:text-base mt-4 max-w-xl mx-auto">
+              Project-based pricing. Outcome-driven engagements. No hidden costs, no lock-ins.
             </p>
           </FadeUp>
         </div>
@@ -97,21 +115,28 @@ export default function PricingPage() {
           {pricingTiers.map((tier, idx) => (
             <div 
               key={idx} 
-              className={`p-8 rounded-3xl border flex flex-col justify-between ${
-                idx === 1
-                  ? "bg-zinc-950/60 border-brand-cyan/25 shadow-[0_8px_30px_rgba(0,243,255,0.02)]"
+              className={`p-8 rounded-3xl border flex flex-col justify-between relative ${
+                tier.popular
+                  ? "bg-[#071428] border-brand-cyan/25 shadow-[0_8px_30px_rgba(0,243,255,0.05)]"
                   : "bg-zinc-950/20 border-white/5"
               }`}
             >
+              {tier.popular && (
+                <div className="absolute -top-3.5 right-6 bg-brand-cyan text-black text-[9px] uppercase font-extrabold tracking-widest px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
+                  <Sparkles className="h-3 w-3" />
+                  Most Popular
+                </div>
+              )}
+
               <div>
-                <h3 className="text-xl font-bold text-white mb-2">{tier.name}</h3>
-                <p className="text-zinc-500 text-xs leading-relaxed mb-6">{tier.description}</p>
-                <span className="text-2xl md:text-3xl font-extrabold text-white block mt-4 mb-6">{tier.starting}</span>
+                <h3 className="text-xl font-bold text-white mb-1">{tier.name}</h3>
+                <span className="text-[10px] text-brand-cyan font-mono block mb-4">{tier.forWho}</span>
+                <span className="text-3xl md:text-4xl font-extrabold text-white block my-6">{tier.price}</span>
                 
                 <ul className="grid gap-3 pt-6 border-t border-white/5 text-xs text-zinc-400 mb-8">
                   {tier.features.map((feat, i) => (
-                    <li key={i} className="flex gap-2 items-center">
-                      <Check className="h-4 w-4 text-brand-cyan shrink-0" />
+                    <li key={i} className="flex gap-2 items-start">
+                      <Check className="h-4 w-4 text-brand-cyan shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -120,44 +145,51 @@ export default function PricingPage() {
 
               <CTAButton
                 href="/contact"
-                variant={idx === 1 ? "primary" : "outline"}
+                variant={tier.popular ? "primary" : "outline"}
                 className="w-full mt-auto"
               >
-                Get Started
+                {tier.ctaText}
               </CTAButton>
             </div>
           ))}
         </StaggerChildren>
 
-        {/* Engagement Models Explanation */}
+        {/* How We Charge Section */}
         <section className="mb-24 py-16 border-t border-white/5">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
               <FadeUp delay={0.1}>
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-purple font-mono">Our Methods</span>
+                <span className="text-xs font-bold uppercase tracking-widest text-brand-purple font-mono">Engagement Models</span>
               </FadeUp>
               <FadeUp delay={0.2}>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mt-3 mb-6">How We Work With You</h2>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mt-3 mb-6">How We Charge</h2>
               </FadeUp>
               <FadeUp delay={0.3}>
                 <p className="text-zinc-400 text-sm leading-relaxed mb-4">
-                  AI operations scale over time. We structure our consulting to support you at every stage, from initial database audits to continuous monthly pipeline improvements.
+                  We believe in pricing that scales with your success. Every engagement starts with a scoped audit — you know the exact investment before any work begins. No hourly surprises. No scope creep without your approval.
                 </p>
               </FadeUp>
             </div>
 
             <div className="lg:col-span-7 grid gap-6">
-              <FadeUp delay={0.2} className="p-6 rounded-2xl bg-zinc-950/40 border border-white/5">
-                <h4 className="text-sm font-bold text-white">Project-Based Setup (Fixed Scope)</h4>
+              <FadeUp delay={0.2} className="p-6 rounded-2xl bg-[#071428] border border-white/5">
+                <h4 className="text-sm font-bold text-white">Fixed Scope Project</h4>
                 <p className="text-zinc-500 text-xs mt-2 leading-relaxed">
-                  Best for well-defined integrations (e.g. setting up a Looker Studio data warehouse or building a custom RAG search widget for standard law manuals). We scope, design, test, and hand over the keys in 4 to 8 weeks.
+                  Ideal for first engagements, clear deliverable, fixed price.
                 </p>
               </FadeUp>
 
-              <FadeUp delay={0.3} className="p-6 rounded-2xl bg-zinc-950/40 border border-white/5">
-                <h4 className="text-sm font-bold text-white">Ongoing Integration Retainer</h4>
+              <FadeUp delay={0.3} className="p-6 rounded-2xl bg-[#071428] border border-white/5">
+                <h4 className="text-sm font-bold text-white">Monthly Retainer</h4>
                 <p className="text-zinc-500 text-xs mt-2 leading-relaxed">
-                  Best for businesses expanding their AI footprint continuously. We act as your on-call AI automation team, monitoring webhook logs, updating vector database archives, adding new WhatsApp sequences, and optimizing system prompts monthly.
+                  Ongoing optimisation, dedicated hours, predictable cost.
+                </p>
+              </FadeUp>
+
+              <FadeUp delay={0.4} className="p-6 rounded-2xl bg-[#071428] border border-white/5">
+                <h4 className="text-sm font-bold text-white">Dedicated Pod</h4>
+                <p className="text-zinc-500 text-xs mt-2 leading-relaxed">
+                  Enterprise scale, full-time AIRIZZ team embedded in your operations.
                 </p>
               </FadeUp>
             </div>
@@ -168,7 +200,7 @@ export default function PricingPage() {
         <section className="max-w-3xl mx-auto py-16 border-t border-white/5">
           <div className="text-center mb-12">
             <FadeUp delay={0.1}>
-              <h2 className="text-2xl md:text-4xl font-bold text-white">Frequently Asked Questions</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-white">Frequently Asked Questions</h2>
             </FadeUp>
           </div>
 
@@ -176,12 +208,15 @@ export default function PricingPage() {
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <FadeUp key={idx} delay={0.1 * idx} className="border-b border-white/5 pb-4">
+                <FadeUp key={idx} delay={0.05 * idx} className="border-b border-white/5 pb-4">
                   <button
                     onClick={() => toggleFaq(idx)}
                     className="w-full flex items-center justify-between text-left py-4 text-sm font-bold text-white hover:text-brand-cyan transition-colors cursor-pointer"
                   >
-                    <span>{faq.q}</span>
+                    <span className="flex items-center gap-2">
+                      <HelpCircle className="h-4 w-4 text-zinc-500 shrink-0" />
+                      {faq.q}
+                    </span>
                     <ChevronDown className={`h-4 w-4 text-zinc-500 transition-transform duration-350 ${isOpen ? "rotate-180 text-brand-cyan" : ""}`} />
                   </button>
 
@@ -194,7 +229,7 @@ export default function PricingPage() {
                         transition={{ duration: 0.25, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="text-xs text-zinc-400 leading-relaxed pb-2 pt-1 pr-6">
+                        <p className="text-xs text-zinc-400 leading-relaxed pb-4 pt-1 pl-6">
                           {faq.a}
                         </p>
                       </motion.div>

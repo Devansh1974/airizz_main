@@ -7,21 +7,21 @@ export interface TestimonialItem {
 
 export const testimonialsData: TestimonialItem[] = [
   {
-    quote: "AIRIZZ transformed our sales cycle. Their custom WhatsApp CRM bot now answers inbound catalog questions instantly, cutting response delays and boosting sales.",
-    author: "Rakesh Sharma",
-    role: "CEO, Sharma Logistics & Distribution",
+    quote: "AIRIZZ reduced our manual invoice processing by 62%. What used to take our team 3 days now runs automatically overnight.",
+    author: "Rajesh M.",
+    role: "Operations Director, Logistics Firm",
     location: "Mumbai"
   },
   {
-    quote: "The semantic research portal they built on our case archive saved our junior associates hundreds of hours of manual law review. The security setup is top tier.",
-    author: "Ananya Sen",
-    role: "Managing Partner, Sen & Associates",
-    location: "New Delhi"
+    quote: "The AI consulting engagement delivered measurable ROI within 8 weeks. Our sales team now spends time selling, not entering data.",
+    author: "Priya S.",
+    role: "CEO, Legal Services Firm",
+    location: "Bangalore"
   },
   {
-    quote: "By connecting our machine temperature logs directly to a real-time analytics panel, we spotted and fixed components before they failed, saving major factory hours.",
-    author: "Vikram Adiga",
-    role: "Head of Operations, Adiga Components",
-    location: "Bangalore"
+    quote: "Their data integration work unified 6 disconnected tools into one dashboard. We finally have a single source of truth.",
+    author: "Anil K.",
+    role: "CTO, Manufacturing Company",
+    location: "Pune"
   }
 ];

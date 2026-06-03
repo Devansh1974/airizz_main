@@ -1,27 +1,31 @@
 export interface TeamMember {
+  initials: string;
   name: string;
   role: string;
   bio: string;
-  image: string;
+  linkedin: string;
 }
 
 export const teamData: TeamMember[] = [
   {
-    name: "Devansh Singh",
-    role: "Founder & Lead Architect",
-    bio: "Ex-Automation Lead. Expert in designing high-scalability LLM agents and database systems for enterprise clients.",
-    image: "/team-devansh.jpg"
+    initials: "F1",
+    name: "[Founder Name]",
+    role: "Co-Founder & CEO",
+    bio: "Leads strategy and client engagements. Background in enterprise technology and AI.",
+    linkedin: "#"
   },
   {
-    name: "Priyanka Nair",
-    role: "Lead AI Engineer",
-    bio: "Specialist in RAG pipelines, fine-tuning language models, and secure vector database deployments.",
-    image: "/team-priyanka.jpg"
+    initials: "F2",
+    name: "[Co-Founder Name]",
+    role: "Co-Founder & CTO",
+    bio: "Leads product engineering and technical architecture. 8+ years building scalable systems.",
+    linkedin: "#"
   },
   {
-    name: "Amit Patel",
-    role: "Senior Integrations Specialist",
-    bio: "Master of API mappings and ETL pipeline optimization, connecting legacy systems with cloud data silos.",
-    image: "/team-amit.jpg"
+    initials: "T1",
+    name: "[Team Member]",
+    role: "Head of AI Consulting",
+    bio: "Specialises in generative AI implementation and marketing automation for SMBs.",
+    linkedin: "#"
   }
 ];

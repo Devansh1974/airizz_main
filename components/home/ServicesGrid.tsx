@@ -2,19 +2,45 @@
 
 import React from "react";
 import Link from "next/link";
-import { Zap, Users, Brain, TrendingUp, ArrowRight } from "lucide-react";
-import { servicesData } from "@/content/data/services";
+import { Code, Brain, Database, TrendingUp, ArrowRight } from "lucide-react";
 import FadeUp from "../animations/FadeUp";
 import StaggerChildren from "../animations/StaggerChildren";
 
-const iconMap = {
-  Zap: Zap,
-  Users: Users,
-  Brain: Brain,
-  TrendingUp: TrendingUp,
-};
-
-type IconNameType = keyof typeof iconMap;
+const servicesList = [
+  {
+    id: "product-engineering",
+    name: "Product Engineering",
+    icon: Code,
+    desc: "We build scalable AI-powered applications, high-performance SaaS platforms, and bespoke mobile solutions.",
+    stat: "Avg. 3-week MVP delivery",
+    href: "/services/product-engineering"
+  },
+  {
+    id: "ai-consulting",
+    name: "AI Consulting for SMB",
+    icon: Brain,
+    desc: "ROI-focused AI consulting to help SMBs leverage Generative AI, predictive analytics, and intelligent chatbots.",
+    stat: "ROI visible in 60 days",
+    href: "/services/ai-consulting",
+    featured: true
+  },
+  {
+    id: "data-integration",
+    name: "Data Integration Services",
+    icon: Database,
+    desc: "We eliminate data silos by securely integrating your CRMs, ERPs, APIs, and marketing platforms into a unified source.",
+    stat: "Avg. 2-week integration",
+    href: "/services/data-integration"
+  },
+  {
+    id: "marketing-automation",
+    name: "Marketing Automation Agency",
+    icon: TrendingUp,
+    desc: "Turn leads into loyal customers while you sleep. We design, implement, and optimise robust marketing automation workflows.",
+    stat: "3X average lead conversion",
+    href: "/services/marketing-automation"
+  }
+];
 
 export default function ServicesGrid() {
   return (
@@ -24,30 +50,27 @@ export default function ServicesGrid() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
           <div>
             <FadeUp delay={0.1}>
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan">Core Expertise</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan">What We Do</span>
             </FadeUp>
             <FadeUp delay={0.2}>
               <h2 className="text-3xl md:text-5xl font-bold text-white mt-3">
-                Bespoke AI Solutions
+                Tailored Solutions for Modern Businesses
               </h2>
             </FadeUp>
           </div>
-          <FadeUp delay={0.3}>
-            <p className="text-zinc-400 text-sm md:text-base max-w-md">
-              We design and construct operational integrations tailored to your specific database structures and standard guidelines.
-            </p>
-          </FadeUp>
         </div>
 
         {/* Services Grid */}
         <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {servicesData.map((service) => {
-            const IconComponent = iconMap[service.iconName as IconNameType] || Brain;
+          {servicesList.map((service) => {
+            const IconComponent = service.icon;
             return (
               <Link
                 key={service.id}
                 href={service.href}
-                className="group relative rounded-3xl glass-interactive p-8 flex flex-col justify-between min-h-[300px] overflow-hidden"
+                className={`group relative rounded-3xl glass-interactive p-8 flex flex-col justify-between min-h-[300px] overflow-hidden ${
+                  service.featured ? "border-l-4 border-l-brand-cyan" : ""
+                }`}
               >
                 {/* Background soft glow */}
                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-brand-cyan/5 to-brand-purple/5 blur-xl group-hover:scale-150 transition-transform duration-500" />
@@ -62,15 +85,20 @@ export default function ServicesGrid() {
                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">
                     {service.name}
                   </h3>
-                  <p className="text-zinc-400 text-sm leading-relaxed max-w-sm mb-6">
-                    {service.description}
+                  <p className="text-zinc-400 text-xs md:text-sm leading-relaxed max-w-sm mb-6">
+                    {service.desc}
                   </p>
                 </div>
 
-                {/* Footer link */}
-                <div className="flex items-center gap-2 text-xs font-bold text-zinc-500 group-hover:text-white transition-colors mt-auto">
-                  <span>Explore Capabilities</span>
-                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                {/* Footer link & stat */}
+                <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-auto">
+                  <span className="text-[10px] uppercase font-mono tracking-widest text-brand-cyan font-bold">
+                    {service.stat}
+                  </span>
+                  <div className="flex items-center gap-1 text-xs font-bold text-zinc-500 group-hover:text-white transition-colors">
+                    <span>Learn More</span>
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                  </div>
                 </div>
               </Link>
             );

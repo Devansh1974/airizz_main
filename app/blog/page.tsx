@@ -15,17 +15,17 @@ export const metadata = generateSeoMetadata({
 export default function BlogPage() {
   const posts = getAllBlogPosts();
 
-  // If fs read yields empty array, fallback to local static stub for client compiler safety
+  // If fs read yields empty array, fallback to local static stub for compiler safety
   const fallbackPosts = [
     {
-      slug: "future-of-automation",
-      title: "The Future of AI Automation for Indian SMEs",
+      slug: "ai-automation-indian-smbs",
+      title: "AI Automation for Indian SMBs: Where to Actually Start",
       date: "2026-05-15",
-      description: "How localized LLMs, WhatsApp integration, and custom workflow automations are leveling the playing field for Indian businesses.",
-      category: "AI & Automation",
-      author: "Devansh Singh",
-      authorRole: "Founder, AIRIZZ",
-      readTime: "5 min read"
+      description: "Most Indian SMBs know they should be doing something with AI. Very few know where to begin. Here's a practical, no-jargon starting point.",
+      category: "AI Strategy",
+      author: "AIRIZZ Team",
+      authorRole: "AIRIZZ Systems Team",
+      readTime: "6 min read"
     }
   ];
 

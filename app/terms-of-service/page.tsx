@@ -6,13 +6,13 @@ import FadeUp from "@/components/animations/FadeUp";
 
 export const metadata = generateSeoMetadata({
   title: "Terms of Service | AIRIZZ",
-  description: "Read the Terms of Service governing the consulting and integration services at AIRIZZ.",
+  description: "Read the Terms of Service governing the consulting and integration services at AIRIZZ Consultancy Services Private Limited.",
   path: "/terms-of-service",
 });
 
 export default function TermsOfServicePage() {
   return (
-    <div className="bg-black text-white py-16 md:py-24">
+    <div className="bg-[#040d1a] text-white py-16 md:py-24">
       <div className="max-w-3xl mx-auto px-6">
         {/* Back Link */}
         <FadeUp delay={0.1} className="mb-8">
@@ -31,39 +31,57 @@ export default function TermsOfServicePage() {
             <BookOpen className="h-5 w-5" />
           </div>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2">Terms of Service</h1>
-          <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block">
-            Last Updated: June 3, 2026
+          <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block font-mono">
+            Last Updated: June 2026
           </span>
         </FadeUp>
 
         {/* Legal Text */}
-        <FadeUp delay={0.3} className="grid gap-6 text-xs text-zinc-400 leading-relaxed">
-          <p>
-            Welcome to the **AIRIZZ Technologies** website (airizz.co). By visiting our website, booking an operational strategy audit session, or engaging us for consulting, you agree to comply with and be bound by the following Terms of Service.
-          </p>
+        <FadeUp delay={0.3} className="grid gap-8 text-xs text-zinc-400 leading-relaxed">
+          <div>
+            <h3 className="text-sm font-bold text-white mb-3">1. Use of Website</h3>
+            <p>
+              By accessing and using airizz.co, you represent that you are at least 18 years of age and agree to comply with these Terms of Service. If you do not agree to these terms, please discontinue use of our website immediately.
+            </p>
+          </div>
 
-          <h3 className="text-sm font-bold text-white mt-4">1. Scope of Service</h3>
-          <p>
-            AIRIZZ provides custom technical consulting, API integrations, data warehouse builds, and custom RAG model configurations. Each engagement is governed by a separate, signed Master Services Agreement (MSA) and Statement of Work (SOW) detailing exact database parameters and SLA milestones.
-          </p>
+          <div>
+            <h3 className="text-sm font-bold text-white mb-3">2. Intellectual Property</h3>
+            <p>
+              Unless otherwise indicated, all content on this website—including copy, code, logos, designs, layouts, graphics, and illustrations—is the exclusive intellectual property of AIRIZZ Consultancy Services Private Limited. You may not distribute, reproduce, or modify any content without our prior written consent.
+            </p>
+          </div>
 
-          <h3 className="text-sm font-bold text-white mt-4">2. Intellectual Property</h3>
-          <p>
-            Unless specified in a signed SOW, all generic pipeline designs, custom scripts, and integrations built using public SDKs are intellectual property of AIRIZZ. Upon final payment of an project, the client receives non-exclusive ownership licenses to execute the specific scripts inside their systems.
-          </p>
+          <div>
+            <h3 className="text-sm font-bold text-white mb-3">3. No Warranties</h3>
+            <p>
+              This website and all information provided herein are offered on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis, without warranties of any kind, either express or implied, including but not limited to suitability, completeness, security, or accuracy.
+            </p>
+          </div>
 
-          <h3 className="text-sm font-bold text-white mt-4">3. Calendar Bookings & Audits</h3>
-          <p>
-            Our 20-minute audit sessions are provided free of charge for Indian businesses matching our qualification criteria. We reserve the right to reschedule or cancel appointments that do not qualify.
-          </p>
+          <div>
+            <h3 className="text-sm font-bold text-white mb-3">4. Limitation of Liability</h3>
+            <p>
+              In no event shall AIRIZZ Consultancy Services Private Limited, its directors, employees, or partners be liable for any direct, indirect, incidental, or consequential damages arising out of your access to, or inability to access, this website.
+            </p>
+          </div>
 
-          <h3 className="text-sm font-bold text-white mt-4">4. Liability & Guarantees</h3>
-          <p>
-            While we construct workflows with retry mechanisms and error alerts, third-party API changes (e.g. Meta WhatsApp Business API updates, CRM schema updates) can cause system pauses. AIRIZZ is not liable for data loss or operational interruptions resulting from third-party API updates.
-          </p>
+          <div>
+            <h3 className="text-sm font-bold text-white mb-3">5. Governing Law</h3>
+            <p>
+              These Terms of Service are governed by and construed in accordance with the laws of India. Any disputes arising out of or related to these terms shall be subject to the exclusive jurisdiction of the courts of Bangalore, Karnataka, India.
+            </p>
+          </div>
 
-          <p className="mt-8 pt-6 border-t border-white/5 text-[10px] text-zinc-500">
-            For questions about our service agreements, please contact **hello@airizz.co**.
+          <div>
+            <h3 className="text-sm font-bold text-white mb-3">6. Contact</h3>
+            <p>
+              If you have any questions or concerns about these Terms of Service, please contact us at **connect@airizz.co**.
+            </p>
+          </div>
+
+          <p className="mt-8 pt-6 border-t border-white/5 text-[10px] text-zinc-500 font-mono">
+            For formal legal notices, please write to **connect@airizz.co**.
           </p>
         </FadeUp>
       </div>

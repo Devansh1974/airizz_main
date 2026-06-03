@@ -1,15 +1,17 @@
+@import url('https://api.fontshare.com/css?f[]=clash-display@300,400,500,600,700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-background: #030303;
+  --color-background: #040d1a;
   --color-foreground: #ffffff;
   --color-brand-cyan: #00f3ff;
   --color-brand-purple: #bd00ff;
-  --color-dark-card: #0a0a0c;
-  --color-dark-card-hover: #121217;
-  --color-muted-text: #a1a1aa;
+  --color-dark-card: #071428;
+  --color-dark-card-hover: #0c1f3d;
+  --color-muted-text: #94a3b8;
   
-  --font-sans: var(--font-outfit), system-ui, sans-serif;
+  --font-sans: var(--font-bricolage), system-ui, sans-serif;
+  --font-heading: 'Clash Display', var(--font-bricolage), system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), monospace;
   
   --animate-marquee: marquee 30s linear infinite;
@@ -27,7 +29,7 @@
 }
 
 :root {
-  --background: #030303;
+  --background: #040d1a;
   --foreground: #ffffff;
   color-scheme: dark;
 }
@@ -126,4 +128,9 @@ html.lenis {
 }
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Clash Display', var(--font-bricolage), system-ui, sans-serif;
+  letter-spacing: -0.01em;
 }

@@ -9,13 +9,15 @@ import FadeUp from "../animations/FadeUp";
 export default function TestimonialsCarousel() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0); // -1 for left, 1 for right
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       handleNext();
-    }, 7000);
+    }, 5000);
     return () => clearInterval(timer);
-  }, [index]);
+  }, [index, isPaused]);
 
   const handlePrev = () => {
     setDirection(-1);
@@ -58,7 +60,7 @@ export default function TestimonialsCarousel() {
         {/* Header */}
         <div className="mb-12">
           <FadeUp delay={0.1}>
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan">Client Trust</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan">What Our Clients Say</span>
           </FadeUp>
           <FadeUp delay={0.2}>
             <h2 className="text-3xl md:text-5xl font-bold text-white mt-3">
@@ -68,7 +70,11 @@ export default function TestimonialsCarousel() {
         </div>
 
         {/* Carousel Box */}
-        <div className="relative min-h-[250px] flex items-center justify-center p-6 md:p-12 glass rounded-3xl">
+        <div 
+          className="relative min-h-[250px] flex items-center justify-center p-6 md:p-12 glass rounded-3xl"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
           <Quote className="absolute top-6 left-6 h-12 w-12 text-white/5 select-none pointer-events-none" />
 
           <AnimatePresence initial={false} custom={direction} mode="wait">

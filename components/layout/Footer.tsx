@@ -26,9 +26,9 @@ export default function Footer() {
             Empowering Indian SMEs, traditional businesses, and enterprises with custom AI consulting, workflow automation, and CRM intelligence to scale revenue.
           </p>
           <div className="flex flex-col gap-3 text-sm text-zinc-500">
-            <a href="mailto:hello@airizz.co" className="flex items-center gap-2 hover:text-white transition-colors">
+            <a href="mailto:connect@airizz.co" className="flex items-center gap-2 hover:text-white transition-colors">
               <Mail className="h-4 w-4" />
-              hello@airizz.co
+              connect@airizz.co
             </a>
             <a href="tel:+919876543210" className="flex items-center gap-2 hover:text-white transition-colors">
               <Phone className="h-4 w-4" />
@@ -36,7 +36,7 @@ export default function Footer() {
             </a>
             <div className="flex items-start gap-2">
               <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
-              <span>Bangalore, Karnataka, India</span>
+              <span>Enterprise HQ, India</span>
             </div>
           </div>
         </div>
@@ -46,23 +46,23 @@ export default function Footer() {
           <h4 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">Services</h4>
           <ul className="flex flex-col gap-4 text-sm text-zinc-400">
             <li>
-              <Link href="/services/workflow-automation" className="hover:text-brand-cyan transition-colors">
-                Workflow Automation
+              <Link href="/services/product-engineering" className="hover:text-brand-cyan transition-colors">
+                Product Engineering
               </Link>
             </li>
             <li>
-              <Link href="/services/ai-crm" className="hover:text-brand-cyan transition-colors">
-                AI-Powered CRM
+              <Link href="/services/ai-consulting" className="hover:text-brand-cyan transition-colors">
+                AI Consulting for SMB
               </Link>
             </li>
             <li>
-              <Link href="/services/custom-llm" className="hover:text-brand-cyan transition-colors">
-                Custom LLM Solutions
+              <Link href="/services/data-integration" className="hover:text-brand-cyan transition-colors">
+                Data Integration
               </Link>
             </li>
             <li>
-              <Link href="/services/data-strategy" className="hover:text-brand-cyan transition-colors">
-                Data Strategy
+              <Link href="/services/marketing-automation" className="hover:text-brand-cyan transition-colors">
+                Marketing Automation
               </Link>
             </li>
           </ul>
@@ -84,7 +84,7 @@ export default function Footer() {
             </li>
             <li>
               <Link href="/industries/manufacturing" className="hover:text-brand-purple transition-colors">
-                Manufacturing
+                Manufacturing & Logistics
               </Link>
             </li>
           </ul>
@@ -121,7 +121,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto px-6 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
         <div>
-          &copy; {currentYear} AIRIZZ Technologies Pvt Ltd. All rights reserved.
+          &copy; {currentYear} AIRIZZ Consultancy Services Private Limited. All rights reserved.
         </div>
         <div className="flex gap-6">
           <Link href="/privacy-policy" className="hover:text-white transition-colors">

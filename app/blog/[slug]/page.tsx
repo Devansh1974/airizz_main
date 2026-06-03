@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PageProps) {
 export async function generateStaticParams() {
   const posts = getAllBlogPosts();
   if (posts.length === 0) {
-    return [{ slug: "future-of-automation" }];
+    return [{ slug: "ai-automation-indian-smbs" }];
   }
   return posts.map((post) => ({
     slug: post.slug,
@@ -148,7 +148,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </span>
 
               <p className="text-zinc-500 text-[10.5px] mt-4 leading-relaxed">
-                Devansh leads systems design and prompt engineering audits for traditional trade lines and enterprises at AIRIZZ.
+                The AIRIZZ engineering team leads systems design and prompt engineering audits for traditional trade lines and enterprises.
               </p>
 
               <CTAButton href="/contact" variant="outline" size="sm" className="w-full mt-6">

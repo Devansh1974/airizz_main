@@ -3,15 +3,12 @@ export interface IndustryDetail {
   name: string;
   href: string;
   iconName: string;
+  headline: string;
+  sub: string;
   description: string;
-  details: string;
-  painPoints: string[];
-  solutions: { title: string; desc: string }[];
-  clientCase: {
-    title: string;
-    description: string;
-    stat: string;
-  };
+  painPoints: { title: string; body: string }[];
+  relevantServices: string[];
+  caseStudyTeaser: string;
 }
 
 export const industriesData: IndustryDetail[] = [
@@ -20,71 +17,74 @@ export const industriesData: IndustryDetail[] = [
     name: "Traditional SME",
     href: "/industries/traditional-sme",
     iconName: "Store",
+    headline: "AI Built for Traditional Businesses — Without the Disruption",
+    sub: "We bring generative AI, CRM automation, and intelligent data management to SMEs running on legacy systems. No rip-and-replace. Just measurable improvements layered on top of what you already have.",
     description: "Bringing modern digital automation and CRM processes to legacy trade, retail, and regional networks.",
-    details: "Traditional businesses often lose growth opportunities to manual order tracking, missing lead callbacks, and disconnected stock sheets. We implement automated lead tracking and WhatsApp notifications to convert local buyers systematically.",
     painPoints: [
-      "Leads lost in unmonitored WhatsApp threads or paper logs",
-      "Manual inventory spreadsheets causing stock errors",
-      "Slow response times to inquiries outside of work hours",
-      "Inefficient manual billing and billing verification"
+      {
+        title: "Legacy Systems That Don't Talk",
+        body: "Your accounting software, CRM, and inventory tools were built in different decades. Connecting them manually costs hours every week."
+      },
+      {
+        title: "Manual Quoting & Invoicing",
+        body: "Sales teams spending half their day on quotes and invoices instead of selling is a solved problem — we solve it."
+      },
+      {
+        title: "No Customer Service Automation",
+        body: "Every customer query routed to a human, even the repetitive ones. AI agents can handle 60%+ of tier-1 support."
+      }
     ],
-    solutions: [
-      { title: "WhatsApp CRM Integration", desc: "Sync customer orders directly from WhatsApp chats to a central CRM database." },
-      { title: "Automated Lead Responders", desc: "Instant AI responses to customer catalogs, availability, and prices 24/7." },
-      { title: "Stock Sheets Autopilot", desc: "Automated alerts when inventory reaches thresholds, prompting vendor orders." }
-    ],
-    clientCase: {
-      title: "Regional Distributor Scales Conversions",
-      description: "Implemented custom WhatsApp lead tracking and unified orders dashboard, removing manual record entries.",
-      stat: "85% faster callbacks"
-    }
+    relevantServices: ["data-integration", "ai-consulting", "marketing-automation"],
+    caseStudyTeaser: "Delhi Trading Firm: Automated invoicing process, saving 22 hours per week."
   },
   {
     id: "legal-finance",
     name: "Legal & Finance",
     href: "/industries/legal-finance",
     iconName: "Briefcase",
+    headline: "AI Solutions Built for Compliance-First Industries",
+    sub: "We help legal firms and financial services companies automate the repetitive without compromising the rigorous.",
     description: "Empowering law firms, wealth managers, and audits with secure, vector-indexed research agents.",
-    details: "Legal and financial analysis requires reading long agreements, searching regulations, and cross-matching historical case filings. We set up closed-cloud semantic research portals to fetch clauses and summarize risk factors instantly.",
     painPoints: [
-      "Hundreds of hours spent scanning long agreements for risk clauses",
-      "Fragmented regulatory change updates across multiple government portals",
-      "Manual preparation of standard legal and financial client briefings",
-      "Risk of client data leaks on public generative AI portals"
+      {
+        title: "Manual Contract Review Bottlenecks",
+        body: "Associates spending 40+ hours reviewing standard contracts that AI can pre-screen in minutes."
+      },
+      {
+        title: "Compliance Tracking Across Jurisdictions",
+        body: "Manual compliance monitoring is error-prone and expensive. We build dashboards that track it automatically."
+      },
+      {
+        title: "Client Onboarding Taking Weeks",
+        body: "KYC, document collection, and system setup that takes 2 weeks can be automated to 2 days."
+      }
     ],
-    solutions: [
-      { title: "Semantic SOP Portal", desc: "A closed-network search tool to query and summarize historical briefs and court files." },
-      { title: "Smart Clause Extractor", desc: "Upload agreements to scan, flag, and summarize liability limit clauses instantly." },
-      { title: "Automated Client Summaries", desc: "AI-generated summaries of market updates and changes tailored to client portfolios." }
-    ],
-    clientCase: {
-      title: "Multi-Partner Firm Cuts Audit Time",
-      description: "Configured secure, offline-first vector search across historical dispute records, simplifying discovery.",
-      stat: "65% research time saved"
-    }
+    relevantServices: ["ai-consulting", "data-integration", "product-engineering"],
+    caseStudyTeaser: "Bangalore Law Firm: Reduced client onboarding time from 14 days to 2 days."
   },
   {
     id: "manufacturing",
-    name: "Manufacturing",
+    name: "Manufacturing & Logistics",
     href: "/industries/manufacturing",
     iconName: "Factory",
+    headline: "Precision Automation for Complex Operations",
+    sub: "From ERP integrations to predictive analytics — we help manufacturers and logistics operators make faster decisions with cleaner data.",
     description: "Streamlining material orders, shift logs, and quality check schedules with clean ETL databases.",
-    details: "Silos in parts tracking, vendor contracts, and shift sheets disrupt assembly lines. We connect production databases with real-time Looker Studio reports and email alerts to keep inventory optimal.",
     painPoints: [
-      "Assembly line disruptions caused by delayed parts shipping",
-      "Manual shift logs stored in notebooks, making patterns hard to spot",
-      "Inefficient vendor communication regarding batch compliance",
-      "Delayed reports causing lag in identifying machine failures"
+      {
+        title: "Supply Chain Data Silos",
+        body: "Procurement, warehouse, and dispatch data living in 3 different systems with no unified view."
+      },
+      {
+        title: "Manual Billing & Invoice Errors",
+        body: "Billing errors costing 2-3% of revenue annually — fully preventable with automated reconciliation."
+      },
+      {
+        title: "Slow Decision Cycles",
+        body: "Waiting for end-of-week reports to make decisions that need real-time data."
+      }
     ],
-    solutions: [
-      { title: "Supply Chain Alert System", desc: "Predictive triggers that notify vendor dispatchers when raw stock runs thin." },
-      { title: "Automated Shift Summary Bots", desc: "Transcribe voice logs of factory floor supervisors into clean database records." },
-      { title: "Predictive Quality Dashboards", desc: "Looker Studio charts plotting machinery temperatures to highlight maintenance windows." }
-    ],
-    clientCase: {
-      title: "Auto Components Supplier Cuts Delay",
-      description: "Deployed supply chain trigger scripts and interactive production monitor dashboards to highlight bottlenecks.",
-      stat: "30% drop in downtime"
-    }
+    relevantServices: ["data-integration", "product-engineering", "ai-consulting"],
+    caseStudyTeaser: "Pune Manufacturer: Unified supply chain data, reducing reporting time by 80%."
   }
 ];

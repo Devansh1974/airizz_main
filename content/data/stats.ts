@@ -2,11 +2,12 @@ export interface StatItem {
   value: number;
   suffix: string;
   label: string;
+  sublabel: string;
 }
 
 export const statsData: StatItem[] = [
-  { value: 120, suffix: "+", label: "Consulting Audits Completed" },
-  { value: 85, suffix: "%", label: "Average Efficiency Boost" },
-  { value: 50, suffix: "+", label: "Custom Workflows Deployed" },
-  { value: 10, suffix: "M+", label: "Tasks Automated Monthly" }
+  { value: 44, suffix: "%", label: "Reduction in Manual Task Time", sublabel: "Per client engagement" },
+  { value: 7, suffix: "+", label: "Enterprise Deployments", sublabel: "And counting" },
+  { value: 2, suffix: "X", label: "Faster Decision Cycle Times", sublabel: "Avg across engagements" },
+  { value: 12, suffix: "+", label: "Industries Served", sublabel: "Manufacturing to Legal" }
 ];

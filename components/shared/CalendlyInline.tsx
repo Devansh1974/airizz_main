@@ -7,7 +7,7 @@ interface CalendlyInlineProps {
 }
 
 export default function CalendlyInline({ url }: CalendlyInlineProps) {
-  const calendlyUrl = url || process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/devanshsingh";
+  const calendlyUrl = url || process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/airizz/strategy-audit";
 
   useEffect(() => {
     // Load Calendly script

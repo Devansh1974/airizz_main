@@ -10,16 +10,16 @@ import useScrolled from "@/hooks/useScrolled";
 import CTAButton from "../shared/CTAButton";
 
 const services = [
-  { name: "Workflow Automation", href: "/services/workflow-automation", desc: "Automate manual tasks and standard ops." },
-  { name: "AI-Powered CRM", href: "/services/ai-crm", desc: "Intelligent pipelines & customer profiling." },
-  { name: "Custom LLM Solutions", href: "/services/custom-llm", desc: "Sop-trained chat & analysis agents." },
-  { name: "Data Strategy & Integration", href: "/services/data-strategy", desc: "Unify ERP, CRM, and marketing logs." },
+  { name: "Product Engineering", href: "/services/product-engineering", desc: "Build scalable AI-powered applications & SaaS." },
+  { name: "AI Consulting", href: "/services/ai-consulting", desc: "Generative AI, analytics, & chatbots for SMBs." },
+  { name: "Data Integration", href: "/services/data-integration", desc: "Eliminating data silos securely across APIs." },
+  { name: "Marketing Automation", href: "/services/marketing-automation", desc: "Workflows that turn leads into loyal customers." },
 ];
 
 const industries = [
-  { name: "Traditional SME", href: "/industries/traditional-sme", desc: "Automating legacy commercial ventures." },
-  { name: "Legal & Finance", href: "/industries/legal-finance", desc: "Confidential research & risk modeling." },
-  { name: "Manufacturing", href: "/industries/manufacturing", desc: "Supply chain scheduling & failure checks." },
+  { name: "Traditional SME", href: "/industries/traditional-sme", desc: "Generative AI into legacy systems without disruption." },
+  { name: "Legal & Finance", href: "/industries/legal-finance", desc: "AI agents for contracts, compliance & onboarding." },
+  { name: "Manufacturing", href: "/industries/manufacturing", desc: "ERP integration, auto invoicing, & dashboards." },
 ];
 
 export default function Navbar() {
@@ -52,7 +52,11 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
+          <Link href="/" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+            Home
+          </Link>
+          
           {/* Services Dropdown */}
           <div
             className="relative"
@@ -129,21 +133,30 @@ export default function Navbar() {
             </AnimatePresence>
           </div>
 
-          <Link href="/pricing" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Pricing
+          <Link href="/products" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+            Products
           </Link>
           <Link href="/about" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            About Us
+            About
           </Link>
           <Link href="/blog" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
             Blog
           </Link>
+          <Link href="/case-studies" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+            Case Studies
+          </Link>
         </nav>
 
         {/* Action Button */}
-        <div className="hidden md:block">
-          <CTAButton href="/contact" variant="primary" size="sm" glow>
-            Get Free Audit
+        <div className="hidden lg:block">
+          <CTAButton 
+            href="/contact" 
+            variant="primary" 
+            size="sm" 
+            className="bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-brand-cyan hover:to-blue-700 text-black font-semibold border-none rounded-full"
+            glow
+          >
+            Book a Call
           </CTAButton>
         </div>
 
@@ -203,18 +216,25 @@ export default function Navbar() {
 
               <div className="flex flex-col gap-4 pt-4 border-t border-zinc-800">
                 <Link
-                  href="/pricing"
+                  href="/"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-base font-medium text-zinc-300 hover:text-white"
                 >
-                  Pricing
+                  Home
+                </Link>
+                <Link
+                  href="/products"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-medium text-zinc-300 hover:text-white"
+                >
+                  Products
                 </Link>
                 <Link
                   href="/about"
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-base font-medium text-zinc-300 hover:text-white"
                 >
-                  About Us
+                  About
                 </Link>
                 <Link
                   href="/blog"
@@ -222,6 +242,20 @@ export default function Navbar() {
                   className="text-base font-medium text-zinc-300 hover:text-white"
                 >
                   Blog
+                </Link>
+                <Link
+                  href="/case-studies"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-medium text-zinc-300 hover:text-white"
+                >
+                  Case Studies
+                </Link>
+                <Link
+                  href="/pricing"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-base font-medium text-zinc-300 hover:text-white"
+                >
+                  Pricing
                 </Link>
                 <Link
                   href="/careers"
@@ -236,10 +270,10 @@ export default function Navbar() {
                 <CTAButton
                   href="/contact"
                   variant="primary"
-                  className="w-full"
+                  className="w-full bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-brand-cyan hover:to-blue-700 text-black font-semibold border-none rounded-full"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Get Free Audit
+                  Book a Call
                 </CTAButton>
               </div>
             </div>
