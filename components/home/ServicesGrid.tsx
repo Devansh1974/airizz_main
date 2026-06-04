@@ -44,60 +44,57 @@ const servicesList = [
 
 export default function ServicesGrid() {
   return (
-    <section id="services" className="relative py-24 md:py-32 bg-zinc-950/20 border-t border-white/5 scroll-mt-20">
+    <section id="services" className="relative py-24 md:py-32 bg-bg border-t border-border scroll-mt-20">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
-          <div>
-            <FadeUp delay={0.1}>
-              <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan">What We Do</span>
-            </FadeUp>
-            <FadeUp delay={0.2}>
-              <h2 className="text-3xl md:text-5xl font-bold text-white mt-3">
-                Tailored Solutions for Modern Businesses
-              </h2>
-            </FadeUp>
-          </div>
+        <div className="mb-20">
+          <FadeUp delay={0.1}>
+            <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">What We Do</span>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text mt-3">
+              Tailored Solutions for Modern Businesses
+            </h2>
+          </FadeUp>
         </div>
 
         {/* Services Grid */}
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6">
           {servicesList.map((service) => {
             const IconComponent = service.icon;
             return (
               <Link
                 key={service.id}
                 href={service.href}
-                className={`group relative rounded-3xl glass-interactive p-8 flex flex-col justify-between min-h-[300px] overflow-hidden ${
-                  service.featured ? "border-l-4 border-l-brand-cyan" : ""
+                className={`group relative rounded-[12px] p-6 flex flex-col justify-between min-h-[260px] transition-all duration-200 ease-out hover:-translate-y-0.5 ${
+                  service.featured 
+                    ? "bg-surface border border-border-3 shadow-none" 
+                    : "bg-surface border border-border shadow-none hover:border-border-2"
                 }`}
               >
-                {/* Background soft glow */}
-                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-brand-cyan/5 to-brand-purple/5 blur-xl group-hover:scale-150 transition-transform duration-500" />
-                
                 <div>
                   {/* Icon */}
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-zinc-900 border border-white/5 text-brand-cyan group-hover:text-white group-hover:bg-brand-cyan/25 transition-all duration-300 mb-6">
+                  <div className="flex h-12 w-12 items-center justify-start text-accent mb-6">
                     <IconComponent className="h-6 w-6" />
                   </div>
 
                   {/* Title & Desc */}
-                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-brand-cyan transition-colors">
+                  <h3 className="text-[16px] font-medium text-text mb-2 font-sans">
                     {service.name}
                   </h3>
-                  <p className="text-zinc-400 text-xs md:text-sm leading-relaxed max-w-sm mb-6">
+                  <p className="text-text-2 text-[14px] leading-relaxed max-w-md mb-6 font-sans">
                     {service.desc}
                   </p>
                 </div>
 
                 {/* Footer link & stat */}
-                <div className="flex items-center justify-between border-t border-white/5 pt-4 mt-auto">
-                  <span className="text-[10px] uppercase font-mono tracking-widest text-brand-cyan font-bold">
+                <div className="flex items-center justify-between border-t border-border pt-4 mt-auto">
+                  <span className="text-[11px] uppercase font-mono tracking-wider text-text-3 font-medium">
                     {service.stat}
                   </span>
-                  <div className="flex items-center gap-1 text-xs font-bold text-zinc-500 group-hover:text-white transition-colors">
+                  <div className="flex items-center gap-1 text-[13px] font-normal text-accent group-hover:text-accent-2 transition-colors">
                     <span>Learn More</span>
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </div>
                 </div>
               </Link>

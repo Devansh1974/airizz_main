@@ -1,43 +1,94 @@
-@import url('https://api.fontshare.com/css?f[]=clash-display@300,400,500,600,700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-background: #040d1a;
-  --color-foreground: #ffffff;
-  --color-brand-cyan: #00f3ff;
-  --color-brand-purple: #bd00ff;
-  --color-dark-card: #071428;
-  --color-dark-card-hover: #0c1f3d;
-  --color-muted-text: #94a3b8;
-  
-  --font-sans: var(--font-bricolage), system-ui, sans-serif;
-  --font-heading: 'Clash Display', var(--font-bricolage), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), monospace;
-  
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg2);
+  --color-bg-3: var(--bg3);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface2);
+  --color-surface-3: var(--surface3);
+
+  --color-border: var(--border);
+  --color-border-2: var(--border2);
+  --color-border-3: var(--border3);
+
+  --color-text: var(--text);
+  --color-text-2: var(--text2);
+  --color-text-3: var(--text3);
+  --color-text-inv: var(--text-inv);
+
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent2);
+  --color-accent-bg: var(--accent-bg);
+  --color-accent-border: var(--accent-border);
+
+  --color-red: var(--red);
+  --color-red-bg: var(--red-bg);
+  --color-amber: var(--amber);
+  --color-amber-bg: var(--amber-bg);
+  --color-green: var(--green);
+  --color-green-bg: var(--green-bg);
+
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-mono: var(--font-mono), monospace;
+
+  --letter-spacing-tighter: -0.03em;
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-snug: -0.015em;
+
   --animate-marquee: marquee 30s linear infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  --animate-shimmer: shimmer 2.5s infinite linear;
 
   @keyframes marquee {
     0% { transform: translateX(0%); }
     100% { transform: translateX(-50%); }
   }
-  @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-  }
 }
 
 :root {
-  --background: #040d1a;
-  --foreground: #ffffff;
+  /* ── BACKGROUNDS (charcoal dark scale) ── */
+  --bg:         #0c0c0f;   /* Deepest — main page background */
+  --bg2:        #111114;   /* Alternate sections */
+  --bg3:        #16161a;   /* Card backgrounds */
+  --surface:    #1c1c21;   /* Elevated surfaces, cards */
+  --surface2:   #222228;   /* Hover states, active items */
+  --surface3:   #2a2a32;   /* Input fields, dropdown bg */
+
+  /* ── BORDERS ── */
+  --border:     rgba(255, 255, 255, 0.06);   /* Default — very subtle */
+  --border2:    rgba(255, 255, 255, 0.10);   /* Hover state */
+  --border3:    rgba(0, 200, 180, 0.18);     /* Accent borders */
+
+  /* ── TEXT ── */
+  --text:       #e4e4e7;   /* Primary — soft white, not harsh */
+  --text2:      #8b8b98;   /* Secondary — muted */
+  --text3:      #4a4a58;   /* Tertiary — very muted, labels */
+  --text-inv:   #0c0c0f;   /* Text on light/accent backgrounds */
+
+  /* ── BRAND ACCENT (teal — use sparingly) ── */
+  --accent:     #00c8b4;   /* Primary accent — muted teal */
+  --accent2:    #00e5cf;   /* Hover/active — slightly brighter */
+  --accent-bg:  rgba(0, 200, 180, 0.08);   /* Accent tint bg */
+  --accent-border: rgba(0, 200, 180, 0.20); /* Accent border */
+
+  /* ── FUNCTIONAL COLORS ── */
+  --red:        #f06060;  --red-bg:   rgba(240, 96, 96, 0.10);
+  --amber:      #e8a84c;  --amber-bg: rgba(232, 168, 76, 0.10);
+  --green:      #4cbb8a;  --green-bg: rgba(76, 187, 138, 0.10);
+
+  /* ── GRADIENTS (as CSS vars for easy use) ── */
+  --gradient-accent: linear-gradient(135deg, #00c8b4, #0099ff);
+  --gradient-surface: linear-gradient(180deg, #16161a 0%, #0c0c0f 100%);
+  --gradient-glow: radial-gradient(ellipse at 50% 0%, rgba(0,200,180,0.10) 0%, transparent 65%);
+  --gradient-text: linear-gradient(135deg, #e4e4e7 30%, #8b8b98 100%);
+
   color-scheme: dark;
 }
 
 html,
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg);
+  color: var(--text);
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -60,32 +111,24 @@ body {
 
 /* Glassmorphism utility */
 .glass {
-  background: rgba(10, 10, 12, 0.7);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(20, 20, 25, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
 }
 
 .glass-interactive {
-  background: rgba(10, 10, 12, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(20, 20, 25, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-interactive:hover {
-  background: rgba(10, 10, 12, 0.75);
-  border-color: rgba(0, 243, 255, 0.3);
-  box-shadow: 0 8px 30px rgba(0, 243, 255, 0.05);
-}
-
-/* Glow Effect */
-.glow-cyan {
-  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
-}
-.glow-purple {
-  text-shadow: 0 0 10px rgba(189, 0, 255, 0.5);
+  background: rgba(20, 20, 25, 0.75);
+  border-color: var(--border-2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Grid Background */
@@ -99,18 +142,7 @@ body {
 /* Dot Background */
 .dot-background {
   background-size: 24px 24px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-}
-
-/* Shimmer Button */
-.shimmer-button {
-  background: linear-gradient(90deg, #00f3ff, #bd00ff, #00f3ff);
-  background-size: 200% auto;
-  transition: 0.5s;
-}
-.shimmer-button:hover {
-  background-position: right center;
-  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
 /* Lenis scroll styles */
@@ -131,6 +163,6 @@ html.lenis {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Clash Display', var(--font-bricolage), system-ui, sans-serif;
-  letter-spacing: -0.01em;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }

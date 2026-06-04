@@ -93,50 +93,50 @@ export default function PricingPage() {
   };
 
   return (
-    <div className="bg-[#040d1a] text-white py-16 md:py-24">
+    <div className="bg-bg text-text py-16 md:py-24 font-sans">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="mb-20">
           <FadeUp delay={0.1}>
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan font-mono">Pricing Options</span>
+            <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Pricing Options</span>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mt-3">Transparent Investment</h1>
+            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-text mt-3 font-sans">Transparent Investment</h1>
           </FadeUp>
           <FadeUp delay={0.3}>
-            <p className="text-zinc-400 text-sm md:text-base mt-4 max-w-xl mx-auto">
+            <p className="text-text-2 text-[15px] font-normal leading-relaxed mt-4 max-w-xl">
               Project-based pricing. Outcome-driven engagements. No hidden costs, no lock-ins.
             </p>
           </FadeUp>
         </div>
 
         {/* Pricing Cards Grid */}
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
           {pricingTiers.map((tier, idx) => (
             <div 
               key={idx} 
-              className={`p-8 rounded-3xl border flex flex-col justify-between relative ${
+              className={`p-6 rounded-[12px] border flex flex-col justify-between relative shadow-none ${
                 tier.popular
-                  ? "bg-[#071428] border-brand-cyan/25 shadow-[0_8px_30px_rgba(0,243,255,0.05)]"
-                  : "bg-zinc-950/20 border-white/5"
+                  ? "bg-surface border-border-3"
+                  : "bg-surface border-border"
               }`}
             >
               {tier.popular && (
-                <div className="absolute -top-3.5 right-6 bg-brand-cyan text-black text-[9px] uppercase font-extrabold tracking-widest px-3 py-1 rounded-full flex items-center gap-1 shadow-md">
+                <div className="absolute -top-3 right-6 bg-accent text-text-inv text-[9px] uppercase font-bold tracking-widest px-3 py-1 rounded-[6px] flex items-center gap-1">
                   <Sparkles className="h-3 w-3" />
                   Most Popular
                 </div>
               )}
 
               <div>
-                <h3 className="text-xl font-bold text-white mb-1">{tier.name}</h3>
-                <span className="text-[10px] text-brand-cyan font-mono block mb-4">{tier.forWho}</span>
-                <span className="text-3xl md:text-4xl font-extrabold text-white block my-6">{tier.price}</span>
+                <h3 className="text-[18px] font-semibold text-text mb-1 font-sans">{tier.name}</h3>
+                <span className="text-[11px] font-mono font-medium text-accent uppercase block mb-4">{tier.forWho}</span>
+                <span className="text-3xl md:text-4xl font-bold text-text block my-6 font-sans">{tier.price}</span>
                 
-                <ul className="grid gap-3 pt-6 border-t border-white/5 text-xs text-zinc-400 mb-8">
+                <ul className="grid gap-3 pt-6 border-t border-border text-[13px] text-text-2 mb-8">
                   {tier.features.map((feat, i) => (
                     <li key={i} className="flex gap-2 items-start">
-                      <Check className="h-4 w-4 text-brand-cyan shrink-0 mt-0.5" />
+                      <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -155,40 +155,40 @@ export default function PricingPage() {
         </StaggerChildren>
 
         {/* How We Charge Section */}
-        <section className="mb-24 py-16 border-t border-white/5">
+        <section className="mb-24 py-16 border-t border-border">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5">
               <FadeUp delay={0.1}>
-                <span className="text-xs font-bold uppercase tracking-widest text-brand-purple font-mono">Engagement Models</span>
+                <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Engagement Models</span>
               </FadeUp>
               <FadeUp delay={0.2}>
-                <h2 className="text-2xl md:text-3xl font-bold text-white mt-3 mb-6">How We Charge</h2>
+                <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text mt-3 mb-6 font-sans">How We Charge</h2>
               </FadeUp>
               <FadeUp delay={0.3}>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-4">
+                <p className="text-text-2 text-[14px] leading-relaxed mb-4">
                   We believe in pricing that scales with your success. Every engagement starts with a scoped audit — you know the exact investment before any work begins. No hourly surprises. No scope creep without your approval.
                 </p>
               </FadeUp>
             </div>
 
-            <div className="lg:col-span-7 grid gap-6">
-              <FadeUp delay={0.2} className="p-6 rounded-2xl bg-[#071428] border border-white/5">
-                <h4 className="text-sm font-bold text-white">Fixed Scope Project</h4>
-                <p className="text-zinc-500 text-xs mt-2 leading-relaxed">
+            <div className="lg:col-span-7 grid gap-4">
+              <FadeUp delay={0.2} className="p-6 rounded-[12px] bg-surface border border-border">
+                <h4 className="text-[15px] font-semibold text-text font-sans">Fixed Scope Project</h4>
+                <p className="text-text-2 text-xs mt-2 leading-relaxed font-sans">
                   Ideal for first engagements, clear deliverable, fixed price.
                 </p>
               </FadeUp>
 
-              <FadeUp delay={0.3} className="p-6 rounded-2xl bg-[#071428] border border-white/5">
-                <h4 className="text-sm font-bold text-white">Monthly Retainer</h4>
-                <p className="text-zinc-500 text-xs mt-2 leading-relaxed">
+              <FadeUp delay={0.3} className="p-6 rounded-[12px] bg-surface border border-border">
+                <h4 className="text-[15px] font-semibold text-text font-sans">Monthly Retainer</h4>
+                <p className="text-text-2 text-xs mt-2 leading-relaxed font-sans">
                   Ongoing optimisation, dedicated hours, predictable cost.
                 </p>
               </FadeUp>
 
-              <FadeUp delay={0.4} className="p-6 rounded-2xl bg-[#071428] border border-white/5">
-                <h4 className="text-sm font-bold text-white">Dedicated Pod</h4>
-                <p className="text-zinc-500 text-xs mt-2 leading-relaxed">
+              <FadeUp delay={0.4} className="p-6 rounded-[12px] bg-surface border border-border">
+                <h4 className="text-[15px] font-semibold text-text font-sans">Dedicated Pod</h4>
+                <p className="text-text-2 text-xs mt-2 leading-relaxed font-sans">
                   Enterprise scale, full-time AIRIZZ team embedded in your operations.
                 </p>
               </FadeUp>
@@ -197,10 +197,10 @@ export default function PricingPage() {
         </section>
 
         {/* Accordion FAQ Section */}
-        <section className="max-w-3xl mx-auto py-16 border-t border-white/5">
+        <section className="max-w-3xl mx-auto py-16 border-t border-border">
           <div className="text-center mb-12">
             <FadeUp delay={0.1}>
-              <h2 className="text-2xl md:text-3xl font-bold text-white">Frequently Asked Questions</h2>
+              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text font-sans">Frequently Asked Questions</h2>
             </FadeUp>
           </div>
 
@@ -208,16 +208,16 @@ export default function PricingPage() {
             {faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <FadeUp key={idx} delay={0.05 * idx} className="border-b border-white/5 pb-4">
+                <FadeUp key={idx} delay={0.05 * idx} className="border-b border-border pb-4">
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full flex items-center justify-between text-left py-4 text-sm font-bold text-white hover:text-brand-cyan transition-colors cursor-pointer"
+                    className="w-full flex items-center justify-between text-left py-4 text-[15px] font-medium text-text hover:text-accent transition-colors cursor-pointer border-none bg-transparent"
                   >
-                    <span className="flex items-center gap-2">
-                      <HelpCircle className="h-4 w-4 text-zinc-500 shrink-0" />
+                    <span className="flex items-center gap-2 font-sans">
+                      <HelpCircle className="h-4 w-4 text-text-3 shrink-0" />
                       {faq.q}
                     </span>
-                    <ChevronDown className={`h-4 w-4 text-zinc-500 transition-transform duration-350 ${isOpen ? "rotate-180 text-brand-cyan" : ""}`} />
+                    <ChevronDown className={`h-4 w-4 text-text-3 transition-transform duration-200 ${isOpen ? "rotate-180 text-accent" : ""}`} />
                   </button>
 
                   <AnimatePresence initial={false}>
@@ -226,10 +226,10 @@ export default function PricingPage() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.25, ease: "easeInOut" }}
+                        transition={{ duration: 0.2, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="text-xs text-zinc-400 leading-relaxed pb-4 pt-1 pl-6">
+                        <p className="text-xs text-text-2 leading-relaxed pb-4 pt-1 pl-6 font-sans">
                           {faq.a}
                         </p>
                       </motion.div>

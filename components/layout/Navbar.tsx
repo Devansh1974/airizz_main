@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -23,266 +24,337 @@ const industries = [
 ];
 
 export default function Navbar() {
-  const scrolled = useScrolled(50);
+  const scrolled = useScrolled(80);
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<"services" | "industries" | null>(null);
 
   const toggleMobileMenu = () => setMobileMenuOpen(!mobileMenuOpen);
 
+  const isLinkActive = (href: string) => pathname === href;
+
   return (
-    <header
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full border-b border-transparent",
-        scrolled
-          ? "bg-black/70 backdrop-blur-md border-white/5 py-4"
-          : "bg-transparent py-6"
-      )}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        {/* Brand Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <Image
-            src="/logo.png"
-            alt="AiRIZZ Logo"
-            width={120}
-            height={36}
-            className="h-8 w-auto object-contain"
-            priority
-          />
-        </Link>
-
-        {/* Desktop Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8">
-          <Link href="/" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Home
+    <>
+      <header
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full border-b",
+          scrolled
+            ? "border-border"
+            : "border-transparent"
+        )}
+        style={{
+          height: "60px",
+          backgroundColor: scrolled ? "rgba(12, 12, 15, 0.85)" : "transparent",
+          backdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="AIRIZZ Logo"
+              width={112}
+              height={28}
+              className="h-7 w-auto object-contain"
+              priority
+            />
           </Link>
-          
-          {/* Services Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setActiveDropdown("services")}
-            onMouseLeave={() => setActiveDropdown(null)}
-          >
-            <button className="flex items-center gap-1 text-sm font-medium text-zinc-300 hover:text-white transition-colors py-2 cursor-pointer">
-              Services
-              <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", activeDropdown === "services" && "rotate-180")} />
-            </button>
 
-            <AnimatePresence>
-              {activeDropdown === "services" && (
-                <motion.div
-                  className="absolute top-full left-1/2 -translate-x-1/2 w-80 bg-zinc-950 border border-white/10 rounded-2xl p-4 mt-2 shadow-2xl z-50 grid gap-2"
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {services.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="group flex flex-col p-2.5 rounded-xl hover:bg-white/5 transition-colors"
-                    >
-                      <span className="text-xs font-semibold text-white group-hover:text-brand-cyan transition-colors flex items-center gap-1">
-                        {item.name}
-                        <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
-                      </span>
-                      <span className="text-[10px] text-zinc-500 mt-1 leading-relaxed">{item.desc}</span>
-                    </Link>
-                  ))}
-                </motion.div>
+          {/* Desktop Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-6">
+            <Link
+              href="/"
+              className={cn(
+                "text-[14px] transition-colors duration-200",
+                isLinkActive("/") ? "text-text font-medium" : "text-text-2 hover:text-text"
               )}
-            </AnimatePresence>
+            >
+              Home
+            </Link>
+
+            {/* Services Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("services")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button
+                className={cn(
+                  "flex items-center gap-1 text-[14px] transition-colors duration-200 py-4 cursor-pointer",
+                  pathname.startsWith("/services") ? "text-text font-medium" : "text-text-2 hover:text-text"
+                )}
+              >
+                Services
+                <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-200", activeDropdown === "services" && "rotate-180")} />
+              </button>
+
+              <AnimatePresence>
+                {activeDropdown === "services" && (
+                  <motion.div
+                    className="absolute top-full left-1/2 -translate-x-1/2 w-80 bg-surface border border-border rounded-xl p-3 mt-1 shadow-[0_4px_24px_rgba(0,0,0,0.5)] z-50 grid gap-1"
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    {services.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="group flex flex-col p-2 rounded-lg hover:bg-surface-2 transition-colors"
+                      >
+                        <span className="text-[13px] font-semibold text-text group-hover:text-accent transition-colors flex items-center gap-1">
+                          {item.name}
+                          <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-accent" />
+                        </span>
+                        <span className="text-[11px] text-text-2 mt-0.5 leading-relaxed">{item.desc}</span>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            {/* Industries Dropdown */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown("industries")}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button
+                className={cn(
+                  "flex items-center gap-1 text-[14px] transition-colors duration-200 py-4 cursor-pointer",
+                  pathname.startsWith("/industries") ? "text-text font-medium" : "text-text-2 hover:text-text"
+                )}
+              >
+                Industries
+                <ChevronDown className={cn("h-3.5 w-3.5 transition-transform duration-200", activeDropdown === "industries" && "rotate-180")} />
+              </button>
+
+              <AnimatePresence>
+                {activeDropdown === "industries" && (
+                  <motion.div
+                    className="absolute top-full left-1/2 -translate-x-1/2 w-80 bg-surface border border-border rounded-xl p-3 mt-1 shadow-[0_4px_24px_rgba(0,0,0,0.5)] z-50 grid gap-1"
+                    initial={{ opacity: 0, y: 8, scale: 0.98 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.98 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    {industries.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="group flex flex-col p-2 rounded-lg hover:bg-surface-2 transition-colors"
+                      >
+                        <span className="text-[13px] font-semibold text-text group-hover:text-accent transition-colors flex items-center gap-1">
+                          {item.name}
+                          <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-accent" />
+                        </span>
+                        <span className="text-[11px] text-text-2 mt-0.5 leading-relaxed">{item.desc}</span>
+                      </Link>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <Link
+              href="/about"
+              className={cn(
+                "text-[14px] transition-colors duration-200",
+                isLinkActive("/about") ? "text-text font-medium" : "text-text-2 hover:text-text"
+              )}
+            >
+              About
+            </Link>
+
+            <Link
+              href="/case-studies"
+              className={cn(
+                "text-[14px] transition-colors duration-200",
+                isLinkActive("/case-studies") ? "text-text font-medium" : "text-text-2 hover:text-text"
+              )}
+            >
+              Case Studies
+            </Link>
+
+            <Link
+              href="/blog"
+              className={cn(
+                "text-[14px] transition-colors duration-200",
+                isLinkActive("/blog") ? "text-text font-medium" : "text-text-2 hover:text-text"
+              )}
+            >
+              Blog
+            </Link>
+          </nav>
+
+          {/* Right Action Button */}
+          <div className="hidden lg:block">
+            <CTAButton
+              href="/contact"
+              variant="outline"
+              size="sm"
+              className="border border-border-2 text-text font-medium text-[13px] hover:bg-surface hover:border-border-3 rounded-[6px] px-4 py-[7px]"
+            >
+              Book a Call
+            </CTAButton>
           </div>
 
-          {/* Industries Dropdown */}
-          <div
-            className="relative"
-            onMouseEnter={() => setActiveDropdown("industries")}
-            onMouseLeave={() => setActiveDropdown(null)}
+          {/* Mobile Menu Button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="lg:hidden p-2 text-text-2 hover:text-text transition-colors cursor-pointer"
+            aria-label="Toggle menu"
           >
-            <button className="flex items-center gap-1 text-sm font-medium text-zinc-300 hover:text-white transition-colors py-2 cursor-pointer">
-              Industries
-              <ChevronDown className={cn("h-4 w-4 transition-transform duration-200", activeDropdown === "industries" && "rotate-180")} />
-            </button>
-
-            <AnimatePresence>
-              {activeDropdown === "industries" && (
-                <motion.div
-                  className="absolute top-full left-1/2 -translate-x-1/2 w-80 bg-zinc-950 border border-white/10 rounded-2xl p-4 mt-2 shadow-2xl z-50 grid gap-2"
-                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  transition={{ duration: 0.15 }}
-                >
-                  {industries.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="group flex flex-col p-2.5 rounded-xl hover:bg-white/5 transition-colors"
-                    >
-                      <span className="text-xs font-semibold text-white group-hover:text-brand-purple transition-colors flex items-center gap-1">
-                        {item.name}
-                        <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all" />
-                      </span>
-                      <span className="text-[10px] text-zinc-500 mt-1 leading-relaxed">{item.desc}</span>
-                    </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          <Link href="/products" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Products
-          </Link>
-          <Link href="/about" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            About
-          </Link>
-          <Link href="/blog" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Blog
-          </Link>
-          <Link href="/case-studies" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Case Studies
-          </Link>
-          <Link href="/careers" className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
-            Careers
-          </Link>
-        </nav>
-
-        {/* Action Button */}
-        <div className="hidden lg:block">
-          <CTAButton 
-            href="/contact" 
-            variant="primary" 
-            size="sm" 
-            className="bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-brand-cyan hover:to-blue-700 text-black font-semibold border-none rounded-full"
-            glow
-          >
-            Book a Call
-          </CTAButton>
+            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+      </header>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={toggleMobileMenu}
-          className="lg:hidden p-2 text-zinc-400 hover:text-white transition-colors cursor-pointer"
-        >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
-      </div>
-
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer (Slide in from right) */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div
-            className="fixed inset-0 top-[73px] bg-black/95 z-45 lg:hidden flex flex-col p-6 overflow-y-auto w-full border-t border-white/5"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="flex flex-col gap-6 py-4">
-              <div>
-                <span className="text-xs uppercase tracking-wider text-zinc-600 font-bold">Services</span>
-                <div className="grid gap-4 mt-3 pl-2 border-l border-zinc-800">
-                  {services.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex flex-col"
-                    >
-                      <span className="text-sm font-medium text-white hover:text-brand-cyan transition-colors">{item.name}</span>
-                      <span className="text-[10px] text-zinc-500 mt-0.5">{item.desc}</span>
-                    </Link>
-                  ))}
-                </div>
+          <>
+            {/* Backdrop overlay */}
+            <motion.div
+              className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+            />
+
+            {/* Slide-in panel */}
+            <motion.div
+              className="fixed right-0 top-0 bottom-0 w-[280px] bg-bg-2 border-l border-border z-50 lg:hidden flex flex-col p-6 shadow-2xl overflow-y-auto"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "tween", duration: 0.3 }}
+            >
+              <div className="flex justify-end mb-8">
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="p-1.5 text-text-2 hover:text-text transition-colors"
+                >
+                  <X className="h-5 w-5" />
+                </button>
               </div>
 
-              <div>
-                <span className="text-xs uppercase tracking-wider text-zinc-600 font-bold">Industries</span>
-                <div className="grid gap-4 mt-3 pl-2 border-l border-zinc-800">
-                  {industries.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="flex flex-col"
-                    >
-                      <span className="text-sm font-medium text-white hover:text-brand-purple transition-colors">{item.name}</span>
-                      <span className="text-[10px] text-zinc-500 mt-0.5">{item.desc}</span>
-                    </Link>
-                  ))}
-                </div>
-              </div>
+              <div className="flex flex-col gap-6">
+                {/* Home */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.05 }}
+                >
+                  <Link
+                    href="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-base font-medium text-text hover:text-accent transition-colors"
+                  >
+                    Home
+                  </Link>
+                </motion.div>
 
-              <div className="flex flex-col gap-4 pt-4 border-t border-zinc-800">
-                <Link
-                  href="/"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-300 hover:text-white"
+                {/* Services */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.1 }}
                 >
-                  Home
-                </Link>
-                <Link
-                  href="/products"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-300 hover:text-white"
-                >
-                  Products
-                </Link>
-                <Link
-                  href="/about"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-300 hover:text-white"
-                >
-                  About
-                </Link>
-                <Link
-                  href="/blog"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-300 hover:text-white"
-                >
-                  Blog
-                </Link>
-                <Link
-                  href="/case-studies"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-300 hover:text-white"
-                >
-                  Case Studies
-                </Link>
-                <Link
-                  href="/pricing"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-300 hover:text-white"
-                >
-                  Pricing
-                </Link>
-                <Link
-                  href="/careers"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-base font-medium text-zinc-300 hover:text-white"
-                >
-                  Careers
-                </Link>
-              </div>
+                  <span className="text-xs font-mono uppercase tracking-wider text-text-3 font-bold block mb-2">Services</span>
+                  <div className="grid gap-3.5 pl-3 border-l border-border">
+                    {services.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex flex-col"
+                      >
+                        <span className="text-sm font-medium text-text hover:text-accent transition-colors">{item.name}</span>
+                        <span className="text-[10px] text-text-2 mt-0.5">{item.desc}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
 
-              <div className="pt-6">
-                <CTAButton
-                  href="/contact"
-                  variant="primary"
-                  className="w-full bg-gradient-to-r from-brand-cyan to-blue-600 hover:from-brand-cyan hover:to-blue-700 text-black font-semibold border-none rounded-full"
-                  onClick={() => setMobileMenuOpen(false)}
+                {/* Industries */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.15 }}
                 >
-                  Book a Call
-                </CTAButton>
+                  <span className="text-xs font-mono uppercase tracking-wider text-text-3 font-bold block mb-2">Industries</span>
+                  <div className="grid gap-3.5 pl-3 border-l border-border">
+                    {industries.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex flex-col"
+                      >
+                        <span className="text-sm font-medium text-text hover:text-accent transition-colors">{item.name}</span>
+                        <span className="text-[10px] text-text-2 mt-0.5">{item.desc}</span>
+                      </Link>
+                    ))}
+                  </div>
+                </motion.div>
+
+                {/* Flat Links */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex flex-col gap-4 pt-4 border-t border-border"
+                >
+                  <Link
+                    href="/about"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-base font-medium text-text hover:text-accent"
+                  >
+                    About
+                  </Link>
+                  <Link
+                    href="/case-studies"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-base font-medium text-text hover:text-accent"
+                  >
+                    Case Studies
+                  </Link>
+                  <Link
+                    href="/blog"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-base font-medium text-text hover:text-accent"
+                  >
+                    Blog
+                  </Link>
+                </motion.div>
+
+                {/* CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.25 }}
+                  className="pt-6 border-t border-border"
+                >
+                  <CTAButton
+                    href="/contact"
+                    variant="primary"
+                    className="w-full justify-center font-medium"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    Book a Call
+                  </CTAButton>
+                </motion.div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </header>
+    </>
   );
 }

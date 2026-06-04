@@ -12,7 +12,7 @@ interface StaggerChildrenProps {
 
 export default function StaggerChildren({
   children,
-  staggerDelay = 0.08,
+  staggerDelay = 0.06,
   delay = 0,
   className,
 }: StaggerChildrenProps) {
@@ -28,7 +28,7 @@ export default function StaggerChildren({
   };
 
   const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 15 },
+    hidden: { opacity: 0, y: 16 },
     show: {
       opacity: 1,
       y: 0,

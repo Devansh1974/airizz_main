@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Database, Clock, Puzzle, ArrowRight } from "lucide-react";
+import { Database, Clock, Puzzle } from "lucide-react";
 import FadeUp from "../animations/FadeUp";
 
 const painPoints = [
@@ -24,38 +24,38 @@ const painPoints = [
 
 export default function ProblemSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-black overflow-hidden border-t border-white/5">
+    <section className="relative py-24 md:py-32 bg-bg-2 overflow-hidden border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-20">
+        <div className="mb-20">
           <FadeUp delay={0.1}>
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan">Operational Hurdles</span>
+            <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Operational Hurdles</span>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mt-3">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-text mt-3">
               The Real Cost of Fragmented Systems
             </h2>
           </FadeUp>
         </div>
 
         {/* 2-Column Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Pain Point Cards */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div className="lg:col-span-7 flex flex-col gap-5">
             {painPoints.map((item, idx) => {
               const IconComp = item.icon;
               return (
                 <FadeUp 
                   key={idx} 
                   delay={0.1 * idx} 
-                  className="flex gap-5 p-6 rounded-2xl bg-zinc-950/40 border border-white/5 items-start"
+                  className="flex gap-5 p-6 rounded-[12px] bg-surface border border-border items-start"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-cyan/10 text-brand-cyan">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-2 border border-border-2 text-accent">
                     <IconComp className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-sm">{item.title}</h4>
-                    <p className="text-zinc-400 text-xs mt-2 leading-relaxed">{item.body}</p>
+                    <h4 className="font-sans font-medium text-text text-[15px]">{item.title}</h4>
+                    <p className="text-text-2 text-[14px] mt-2 leading-relaxed">{item.body}</p>
                   </div>
                 </FadeUp>
               );
@@ -65,15 +65,15 @@ export default function ProblemSection() {
           {/* Right Column: Statement & Copy */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             <FadeUp delay={0.2}>
-              <h3 className="text-2xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-brand-purple">
-                Stop Guessing. Start Scaling.
+              <h3 className="font-sans font-semibold text-text tracking-tight" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>
+                Stop Guessing. <span className="text-accent">Start Scaling.</span>
               </h3>
             </FadeUp>
-            <FadeUp delay={0.3}>
-              <p className="text-zinc-300 text-sm md:text-base leading-relaxed">
+            <FadeUp delay={0.3} className="flex flex-col gap-4 text-text-2 text-[15px] font-normal leading-relaxed">
+              <p>
                 Is your business trapped in data silos? Are your marketing and sales teams wasting hours on manual tasks? In the modern digital landscape, fragmented systems and outdated processes don't just cost time — they cost revenue.
               </p>
-              <p className="text-zinc-400 text-xs md:text-sm mt-4 leading-relaxed">
+              <p className="text-[14px] text-text-3">
                 At AIRIZZ, we bridge the gap between your raw data and actionable growth.
               </p>
             </FadeUp>

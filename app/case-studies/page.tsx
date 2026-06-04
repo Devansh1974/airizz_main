@@ -14,16 +14,16 @@ export default function CaseStudiesPage() {
   const studies = getAllCaseStudies();
 
   return (
-    <div className="bg-[#040d1a] text-white py-16 md:py-24 min-h-[80vh]">
-      <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+    <div className="bg-bg text-text py-16 md:py-24 min-h-[80vh] font-sans">
+      <div className="max-w-7xl mx-auto px-6 mb-16">
         <FadeUp delay={0.1}>
-          <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan font-mono">Our Work</span>
+          <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Our Work</span>
         </FadeUp>
         <FadeUp delay={0.2}>
-          <h1 className="text-4xl md:text-6xl font-bold text-white mt-3">Real Results, Real Impact</h1>
+          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-text mt-3 font-sans">Real Results, Real Impact</h1>
         </FadeUp>
         <FadeUp delay={0.3}>
-          <p className="text-zinc-400 text-sm md:text-base mt-4 max-w-xl mx-auto">
+          <p className="text-text-2 text-[15px] font-normal mt-4 max-w-xl leading-relaxed">
             Every case study includes the problem, our approach, and the measurable outcome.
           </p>
         </FadeUp>

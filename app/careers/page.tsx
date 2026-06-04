@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Briefcase, MapPin, Clock, X, CheckCircle, Sparkles, Brain, Globe, TrendingUp } from "lucide-react";
+import { Briefcase, MapPin, Clock, X, CheckCircle, Brain, Globe, TrendingUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import CTAButton from "@/components/shared/CTAButton";
 import FadeUp from "@/components/animations/FadeUp";
@@ -93,37 +93,37 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="bg-[#040d1a] text-white py-16 md:py-24">
+    <div className="bg-bg text-text py-16 md:py-24 font-sans">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="mb-16">
           <FadeUp delay={0.1}>
-            <span className="text-xs font-bold uppercase tracking-widest text-brand-cyan font-mono">Careers</span>
+            <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Careers</span>
           </FadeUp>
           <FadeUp delay={0.2}>
-            <h1 className="text-4xl md:text-6xl font-bold text-white mt-3">Build the Future of AI in India. Join Us.</h1>
+            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-text mt-3 font-sans">Build the Future of AI in India. Join Us.</h1>
           </FadeUp>
           <FadeUp delay={0.3}>
-            <p className="text-zinc-400 text-sm md:text-base mt-4 max-w-xl mx-auto font-medium">
+            <p className="text-text-2 text-[15px] font-normal mt-4 max-w-xl">
               Small team. Massive ownership. Real enterprise AI problems from day one.
             </p>
           </FadeUp>
         </div>
 
         {/* Culture Description Section */}
-        <section className="max-w-3xl mx-auto mb-20 p-8 rounded-3xl bg-[#071428] border border-white/5">
-          <h2 className="text-xl font-bold mb-6 text-brand-cyan">Our Culture</h2>
+        <section className="mb-20 p-8 rounded-[12px] bg-surface border border-border shadow-none">
+          <h2 className="text-[17px] font-medium mb-6 text-text font-sans">Our Culture</h2>
           <ul className="grid gap-4">
-            <li className="flex gap-3 items-start text-sm text-zinc-300">
-              <span className="text-brand-purple shrink-0 mt-0.5">&bull;</span>
+            <li className="flex gap-3 items-start text-[14px] text-text-2">
+              <span className="text-accent shrink-0 mt-0.5">&bull;</span>
               <span>Work directly on live client engagements — no internal sandbox projects.</span>
             </li>
-            <li className="flex gap-3 items-start text-sm text-zinc-300">
-              <span className="text-brand-purple shrink-0 mt-0.5">&bull;</span>
+            <li className="flex gap-3 items-start text-[14px] text-text-2">
+              <span className="text-accent shrink-0 mt-0.5">&bull;</span>
               <span>Remote-first, async culture — work from anywhere in India.</span>
             </li>
-            <li className="flex gap-3 items-start text-sm text-zinc-300">
-              <span className="text-brand-purple shrink-0 mt-0.5">&bull;</span>
+            <li className="flex gap-3 items-start text-[14px] text-text-2">
+              <span className="text-accent shrink-0 mt-0.5">&bull;</span>
               <span>You&apos;ll see your work used by real businesses making real decisions.</span>
             </li>
           </ul>
@@ -131,19 +131,19 @@ export default function CareersPage() {
 
         {/* Perks Section */}
         <section className="mb-20">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold">Perks & Benefits</h2>
+          <div className="mb-12">
+            <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-text font-sans">Perks & Benefits</h2>
           </div>
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {perks.map((perk, i) => {
               const Icon = perk.icon;
               return (
-                <div key={i} className="p-6 md:p-8 rounded-3xl bg-zinc-950/40 border border-white/5 flex flex-col items-center text-center">
-                  <div className="h-12 w-12 rounded-2xl bg-brand-cyan/10 text-brand-cyan flex items-center justify-center mb-6">
-                    <Icon className="h-6 w-6" />
+                <div key={i} className="p-6 md:p-8 rounded-[12px] bg-surface border border-border flex flex-col items-start shadow-none">
+                  <div className="h-10 w-10 rounded-lg bg-surface-2 border border-border-2 text-accent flex items-center justify-center mb-6">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-2">{perk.title}</h3>
-                  <p className="text-zinc-400 text-xs leading-relaxed">{perk.desc}</p>
+                  <h3 className="text-[17px] font-medium text-text mb-2 font-sans">{perk.title}</h3>
+                  <p className="text-text-2 text-xs leading-relaxed font-sans">{perk.desc}</p>
                 </div>
               );
             })}
@@ -152,31 +152,31 @@ export default function CareersPage() {
 
         {/* Roles List */}
         <div className="max-w-4xl mx-auto">
-          <div className="mb-8 flex items-center gap-2 text-zinc-500 text-xs font-bold uppercase tracking-wider">
-            <Briefcase className="h-4 w-4 text-brand-cyan" />
+          <div className="mb-8 flex items-center gap-2 text-text-3 text-[11px] font-mono font-medium uppercase tracking-wider">
+            <Briefcase className="h-4 w-4 text-accent" />
             <span>Open Roles</span>
           </div>
 
-          <StaggerChildren className="grid gap-6">
+          <StaggerChildren className="grid gap-4">
             {openRoles.map((role) => (
               <div 
                 key={role.id} 
-                className="p-6 md:p-8 rounded-3xl bg-[#071428] border border-white/5 flex flex-col md:flex-row justify-between items-start md:items-center gap-6"
+                className="p-6 md:p-8 rounded-[12px] bg-surface border border-border flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-none"
               >
                 <div className="max-w-2xl">
                   <div className="flex flex-wrap items-center gap-3 mb-3">
-                    <h3 className="text-lg md:text-xl font-bold text-white">{role.title}</h3>
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-brand-cyan bg-brand-cyan/5 px-2 py-0.5 rounded border border-brand-cyan/15">
+                    <h3 className="text-[18px] font-semibold text-text font-sans">{role.title}</h3>
+                    <span className="text-[10px] font-mono font-medium uppercase tracking-wider text-accent bg-surface-2 px-2.5 py-0.5 rounded-[6px] border border-border-2">
                       {role.team}
                     </span>
                   </div>
                   
-                  <div className="flex gap-4 text-xs text-zinc-500 mb-4 font-medium">
-                    <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5 text-zinc-600" /> {role.loc}</span>
-                    <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5 text-zinc-600" /> {role.type}</span>
+                  <div className="flex gap-4 text-xs text-text-3 mb-4 font-mono font-medium">
+                    <span className="flex items-center gap-1"><MapPin className="h-3.5 w-3.5" /> {role.loc}</span>
+                    <span className="flex items-center gap-1"><Clock className="h-3.5 w-3.5" /> {role.type}</span>
                   </div>
 
-                  <p className="text-zinc-400 text-xs leading-relaxed">{role.desc}</p>
+                  <p className="text-text-2 text-xs leading-relaxed font-sans">{role.desc}</p>
                 </div>
 
                 <CTAButton
@@ -194,7 +194,7 @@ export default function CareersPage() {
 
         {/* General Application Note */}
         <div className="text-center mt-16">
-          <p className="text-sm text-zinc-500">
+          <p className="text-sm text-text-3 font-sans">
             Don&apos;t see your role?{" "}
             <button
               onClick={() => setSelectedRole({
@@ -205,7 +205,7 @@ export default function CareersPage() {
                 type: "Full-time",
                 desc: "We are always looking for smart builders. Let us know what you do best!"
               })}
-              className="text-brand-cyan hover:underline font-semibold cursor-pointer bg-transparent border-none"
+              className="text-accent hover:text-accent-2 font-semibold cursor-pointer bg-transparent border-none font-sans"
             >
               Send an open application &rarr;
             </button>
@@ -220,7 +220,7 @@ export default function CareersPage() {
             {/* Backdrop */}
             <motion.div
               onClick={closePortal}
-              className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+              className="fixed inset-0 z-50 bg-black/60"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -228,23 +228,23 @@ export default function CareersPage() {
 
             {/* Modal Sheet */}
             <motion.div
-              className="fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-[#071428] border-l border-white/5 shadow-2xl p-6 md:p-8 flex flex-col justify-between overflow-y-auto"
+              className="fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-bg-2 border-l border-border shadow-2xl p-6 md:p-8 flex flex-col justify-between overflow-y-auto"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              transition={{ type: "tween", duration: 0.3 }}
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
                   <div>
-                    <h3 className="text-xl font-bold text-white">Apply for {selectedRole.title}</h3>
-                    <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block mt-1">
+                    <h3 className="text-lg font-semibold text-text font-sans">Apply for {selectedRole.title}</h3>
+                    <span className="text-[10px] text-text-3 font-mono uppercase tracking-wider block mt-1">
                       {selectedRole.team} &bull; {selectedRole.loc}
                     </span>
                   </div>
                   <button
                     onClick={closePortal}
-                    className="p-2 rounded-full hover:bg-white/10 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                    className="p-2 rounded-full hover:bg-surface-2 text-text-2 hover:text-text transition-colors cursor-pointer border-none bg-transparent"
                   >
                     <X className="h-5 w-5" />
                   </button>
@@ -252,9 +252,9 @@ export default function CareersPage() {
 
                 {appStatus === "success" ? (
                   <div className="text-center py-12">
-                    <CheckCircle className="h-16 w-16 text-brand-cyan mx-auto mb-6 animate-bounce" />
-                    <h4 className="text-lg font-bold text-white">Application Received!</h4>
-                    <p className="text-xs text-zinc-500 mt-2 leading-relaxed">
+                    <CheckCircle className="h-12 w-12 text-accent mx-auto mb-6" />
+                    <h4 className="text-[17px] font-semibold text-text font-sans">Application Received!</h4>
+                    <p className="text-xs text-text-2 mt-2 leading-relaxed font-sans">
                       We have successfully received your application files. Our recruiting team will review your profile and update you within 3 business days.
                     </p>
                   </div>
@@ -263,67 +263,67 @@ export default function CareersPage() {
                     <input type="hidden" name="role" value={selectedRole.title} />
 
                     <div>
-                      <label htmlFor="app-name" className="text-[10px] uppercase font-bold tracking-wider text-zinc-500 block mb-1">Full Name</label>
+                      <label htmlFor="app-name" className="text-[10px] font-mono font-medium uppercase tracking-wider text-text-3 block mb-1">Full Name</label>
                       <input
                         id="app-name"
                         name="name"
                         type="text"
                         required
                         placeholder="Ananya Sen"
-                        className="w-full bg-zinc-900 border border-white/5 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all"
+                        className="w-full bg-surface border border-border rounded-[8px] px-4 py-3 text-xs text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all font-sans"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="app-email" className="text-[10px] uppercase font-bold tracking-wider text-zinc-500 block mb-1">Email Address</label>
+                      <label htmlFor="app-email" className="text-[10px] font-mono font-medium uppercase tracking-wider text-text-3 block mb-1">Email Address</label>
                       <input
                         id="app-email"
                         name="email"
                         type="email"
                         required
                         placeholder="ananya@gmail.com"
-                        className="w-full bg-zinc-900 border border-white/5 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all"
+                        className="w-full bg-surface border border-border rounded-[8px] px-4 py-3 text-xs text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all font-sans"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="app-portfolio" className="text-[10px] uppercase font-bold tracking-wider text-zinc-500 block mb-1">LinkedIn URL</label>
+                      <label htmlFor="app-portfolio" className="text-[10px] font-mono font-medium uppercase tracking-wider text-text-3 block mb-1">LinkedIn URL</label>
                       <input
                         id="app-portfolio"
                         name="linkedin"
                         type="url"
                         required
                         placeholder="https://linkedin.com/in/profile"
-                        className="w-full bg-zinc-900 border border-white/5 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all"
+                        className="w-full bg-surface border border-border rounded-[8px] px-4 py-3 text-xs text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all font-sans"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="app-bio" className="text-[10px] uppercase font-bold tracking-wider text-zinc-500 block mb-1">Why AIRIZZ?</label>
+                      <label htmlFor="app-bio" className="text-[10px] font-mono font-medium uppercase tracking-wider text-text-3 block mb-1">Why AIRIZZ?</label>
                       <textarea
                         id="app-bio"
                         name="why_airizz"
                         rows={4}
                         required
                         placeholder="Tell us what excites you about this role and how you can add value..."
-                        className="w-full bg-zinc-900 border border-white/5 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-brand-cyan focus:ring-1 focus:ring-brand-cyan transition-all resize-none"
+                        className="w-full bg-surface border border-border rounded-[8px] px-4 py-3 text-xs text-text focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-all resize-none font-sans"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="app-resume" className="text-[10px] uppercase font-bold tracking-wider text-zinc-500 block mb-1">Resume Upload (PDF)</label>
+                      <label htmlFor="app-resume" className="text-[10px] font-mono font-medium uppercase tracking-wider text-text-3 block mb-1">Resume Upload (PDF)</label>
                       <input
                         id="app-resume"
                         name="resume"
                         type="file"
                         accept=".pdf"
                         required
-                        className="w-full bg-zinc-900 border border-white/5 rounded-xl px-4 py-3 text-xs text-zinc-400 focus:outline-none focus:border-brand-cyan transition-all"
+                        className="w-full bg-surface border border-border rounded-[8px] px-4 py-3 text-xs text-text-2 focus:outline-none focus:border-accent transition-all font-sans"
                       />
                     </div>
 
                     {appStatus === "error" && (
-                      <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-xs leading-relaxed">
+                      <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-[8px] text-red-400 text-xs leading-relaxed font-sans">
                         {errorMessage}
                       </div>
                     )}
@@ -340,7 +340,7 @@ export default function CareersPage() {
                 )}
               </div>
 
-              <div className="text-center text-[10px] text-zinc-500 mt-8 pt-4 border-t border-white/5">
+              <div className="text-center text-[10px] font-mono text-text-3 mt-8 pt-4 border-t border-border">
                 AIRIZZ is an equal opportunity employer. We respect your privacy.
               </div>
             </motion.div>

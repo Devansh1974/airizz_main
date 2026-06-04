@@ -1,75 +1,114 @@
 "use client";
 
-import React from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
-import ParticleCanvas from "../animations/ParticleCanvas";
-import GlowBackground from "../animations/GlowBackground";
+import React, { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import GridLines from "../animations/GridLines";
 import CTAButton from "../shared/CTAButton";
 import FadeUp from "../animations/FadeUp";
 
+const phrases = [
+  "kill manual work",
+  "unify scattered data",
+  "automate work",
+  "scale intelligently",
+  "faster decisions",
+  "build products"
+];
+
 export default function HeroSection() {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % phrases.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section 
-      className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-24 md:py-32"
-      style={{ backgroundColor: "#040d1a" }}
+    <section
+      className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden py-24 md:py-32"
+      style={{
+        backgroundColor: "var(--bg)",
+        background: "radial-gradient(ellipse 80% 40% at 50% -10%, rgba(0, 200, 180, 0.07) 0%, transparent 100%)"
+      }}
     >
-      {/* Background aesthetics */}
+      {/* Grid Pattern overlay */}
       <GridLines />
-      <GlowBackground />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,243,255,0.08)_0%,transparent_60%)] pointer-events-none z-0" />
-      <ParticleCanvas />
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
-        {/* Badge */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+        {/* Eyebrow Pill */}
         <FadeUp delay={0.1}>
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-cyan/25 bg-brand-cyan/5 text-xs text-brand-cyan font-medium mb-8">
-            <Sparkles className="h-3.5 w-3.5 animate-pulse" />
-            <span>Enterprise-Grade AI Solutions</span>
+          <div className="inline-flex items-center px-3 py-1 rounded-full border border-border-2 bg-surface text-[11px] font-mono font-medium text-text-3 uppercase mb-8">
+            AI · Data · Automation
           </div>
         </FadeUp>
 
-        {/* Headline */}
-        <FadeUp delay={0.2}>
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 max-w-5xl leading-tight font-sans">
-            We help Indian SMBs and scaling enterprises eliminate manual work, unify their data, and grow revenue — with bespoke AI.
+        {/* Carousel Headline */}
+        <FadeUp delay={0.2} className="w-full">
+          <h1 className="flex flex-col items-center justify-center text-center text-text font-semibold leading-[1.05] tracking-tighter mb-8 font-sans" style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}>
+            <span className="block text-text">We help businesses</span>
+            <span className="block h-[1.15em] relative overflow-hidden w-full flex items-center justify-center my-1">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={index}
+                  initial={{ y: "80%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: "-80%", opacity: 0 }}
+                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="absolute text-accent block"
+                >
+                  {phrases[index]}
+                </motion.span>
+              </AnimatePresence>
+            </span>
+            <span className="block text-text">with AI.</span>
           </h1>
         </FadeUp>
 
-        {/* Subtitle */}
+        {/* Subheadline */}
         <FadeUp delay={0.3}>
-          <p className="text-zinc-400 text-sm md:text-lg max-w-3xl mb-10 leading-relaxed">
-            From CRM integrations and marketing automation to custom AI agents — AIRIZZ is the technical partner that turns your data into decisions.
+          <p className="text-text-2 text-[17px] font-normal leading-[1.65] max-w-[520px] mx-auto mb-10">
+            From CRM integrations to custom AI agents — we're the technical partner that turns your data into revenue.
           </p>
         </FadeUp>
 
-        {/* Action CTAs */}
+        {/* CTA row */}
         <FadeUp delay={0.4}>
           <div className="flex flex-col sm:flex-row items-center gap-4 justify-center">
             <CTAButton
               href="/contact"
               variant="primary"
-              size="lg"
-              glow
-              icon={<ArrowRight className="h-4 w-4" />}
+              className="px-[22px] py-[10px] text-sm font-medium rounded-[6px]"
             >
-              Book Your Free Strategy Audit &rarr;
+              Book Free Strategy Audit
             </CTAButton>
             <CTAButton
-              href="/services"
+              href="/case-studies"
               variant="secondary"
-              size="lg"
+              className="px-[22px] py-[10px] text-sm font-medium rounded-[6px]"
             >
-              Explore Our Services
+              See Our Work
             </CTAButton>
           </div>
-        </FadeUp>
 
-        {/* Trust line below buttons */}
-        <FadeUp delay={0.5} className="mt-12 text-zinc-500 text-xs md:text-sm max-w-2xl leading-relaxed">
-          Trusted by innovative startups and scaling enterprises across Manufacturing &bull; Healthcare &bull; Finance &bull; Legal Services &bull; Retail &bull; Logistics
+          <div className="font-mono text-[11px] text-text-3 tracking-[0.05em] mt-6">
+            No commitment · Free 30-min call · Response in 24hrs
+          </div>
         </FadeUp>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center">
+        <motion.div
+          animate={{ opacity: [0.3, 0.7, 0.3] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="text-text-3 cursor-pointer"
+        >
+          <ChevronDown className="h-5 w-5" />
+        </motion.div>
       </div>
     </section>
   );

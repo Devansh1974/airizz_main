@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import ScrollProvider from "@/components/providers/ScrollProvider";
 import Navbar from "@/components/layout/Navbar";
@@ -7,16 +7,18 @@ import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/layout/CookieBanner";
 import CalendlyFloat from "@/components/layout/CalendlyFloat";
 
-const bricolageGrotesque = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const inter = Inter({
+  variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -65,11 +67,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolageGrotesque.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body 
-        className="min-h-full flex flex-col bg-background text-foreground font-sans selection:bg-brand-cyan/30 selection:text-white"
+        className="min-h-full flex flex-col bg-bg text-text font-sans selection:bg-accent/30 selection:text-text"
         suppressHydrationWarning
       >
         <ScrollProvider>

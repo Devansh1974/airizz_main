@@ -25,22 +25,22 @@ export default function CTAButton({
   glow = false,
   ...props
 }: CTAButtonProps) {
-  const baseStyles = "inline-flex items-center justify-center font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-cyan/50 disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
+  const baseStyles = "inline-flex items-center justify-center font-sans font-medium rounded-[6px] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent/50 disabled:opacity-50 disabled:pointer-events-none cursor-pointer";
   
   const sizeStyles = {
-    sm: "px-4 py-2 text-xs",
-    md: "px-6 py-3 text-sm",
+    sm: "px-4 py-1.5 text-[13px]",
+    md: "px-[22px] py-[10px] text-sm",
     lg: "px-8 py-4 text-base",
   };
 
   const variantStyles = {
-    primary: "shimmer-button text-black font-semibold",
-    secondary: "glass-interactive text-white hover:text-brand-cyan",
-    outline: "border border-brand-cyan/35 text-white hover:bg-brand-cyan/10 hover:border-brand-cyan",
-    ghost: "text-zinc-400 hover:text-white hover:bg-white/5",
+    primary: "bg-accent text-text-inv hover:bg-accent-2 font-medium",
+    secondary: "bg-transparent border border-border-2 text-text hover:bg-surface hover:border-border-3",
+    outline: "bg-transparent border border-border-2 text-text hover:bg-surface hover:border-border-3",
+    ghost: "text-text-2 hover:text-text hover:bg-white/5",
   };
 
-  const glowStyles = glow ? "shadow-[0_0_15px_rgba(0,243,255,0.3)] hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]" : "";
+  const glowStyles = "";
 
   const content = (
     <motion.span 

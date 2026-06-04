@@ -7,7 +7,9 @@ interface CalendlyInlineProps {
 }
 
 export default function CalendlyInline({ url }: CalendlyInlineProps) {
-  const calendlyUrl = url || process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/airizz/strategy-audit";
+  const baseCalendlyUrl = url || process.env.NEXT_PUBLIC_CALENDLY_URL || "https://calendly.com/airizz/strategy-audit";
+  const hasQueryParams = baseCalendlyUrl.includes("?");
+  const calendlyUrl = baseCalendlyUrl + (hasQueryParams ? "&" : "?") + "background_color=0c0c0f&text_color=e4e4e7&primary_color=00c8b4&hide_gdpr_banner=1";
 
   useEffect(() => {
     // Load Calendly script
