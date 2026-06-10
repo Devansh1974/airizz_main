@@ -8,17 +8,32 @@ const painPoints = [
   {
     icon: Database,
     title: "Scattered Data Silos",
-    body: "Your CRM, ERP, and marketing tools don't talk to each other. Decisions are made on incomplete, stale information."
+    body: "Your CRM, ERP, and marketing tools don't talk to each other. Decisions are made on incomplete, stale information.",
+    color: "#00b8ac", // Teal
+    rgb: "0, 184, 172",
+    gradient: "linear-gradient(135deg, #00b8ac 0%, #3b82f6 100%)",
+    shadow: "0 16px 36px rgba(0, 184, 172, 0.08)",
+    bgGlow: "rgba(0, 184, 172, 0.012)"
   },
   {
     icon: Clock,
     title: "Manual Tasks Eating Hours",
-    body: "Your team spends more time on repetitive data entry and reporting than on work that actually grows revenue."
+    body: "Your team spends more time on repetitive data entry and reporting than on work that actually grows revenue.",
+    color: "#00b8ac", // Teal
+    rgb: "0, 184, 172",
+    gradient: "linear-gradient(135deg, #00b8ac 0%, #0099ff 100%)",
+    shadow: "0 16px 36px rgba(0, 184, 172, 0.08)",
+    bgGlow: "rgba(0, 184, 172, 0.012)"
   },
   {
     icon: Puzzle,
     title: "Fragmented Tools, No Unified View",
-    body: "Dozens of disconnected platforms mean no single source of truth — and no way to measure what's actually working."
+    body: "Dozens of disconnected platforms mean no single source of truth — and no way to measure what's actually working.",
+    color: "#00b8ac", // Teal
+    rgb: "0, 184, 172",
+    gradient: "linear-gradient(135deg, #00b8ac 0%, #6366f1 100%)",
+    shadow: "0 16px 36px rgba(0, 184, 172, 0.08)",
+    bgGlow: "rgba(0, 184, 172, 0.012)"
   }
 ];
 
@@ -48,12 +63,23 @@ export default function ProblemSection() {
                 <FadeUp 
                   key={idx} 
                   delay={0.1 * idx} 
-                  className="flex gap-5 p-6 rounded-[12px] bg-surface border border-border items-start transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_30px_rgba(0,184,172,0.06)] hover:translate-y-[-4px]"
+                  className="group service-card flex gap-5 p-6 rounded-[12px] bg-surface border border-border items-start"
+                  style={{
+                    "--card-hover-shadow": item.shadow,
+                    "--card-accent-rgb": item.rgb,
+                    "--card-accent-color": item.color,
+                    "--card-bg-glow": item.bgGlow,
+                    "--card-gradient": item.gradient,
+                  } as React.CSSProperties}
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-2 border border-border-2 text-accent">
+                  {/* Custom glowing accent border lines */}
+                  <div className="service-card-accent-line-t" />
+                  <div className="service-card-accent-line-l" />
+
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-2 border border-border-2 service-card-icon relative z-10">
                     <IconComp className="h-5 w-5" />
                   </div>
-                  <div>
+                  <div className="relative z-10">
                     <h4 className="font-sans font-medium text-text text-[15px]">{item.title}</h4>
                     <p className="text-text-2 text-[14px] mt-2 leading-relaxed">{item.body}</p>
                   </div>

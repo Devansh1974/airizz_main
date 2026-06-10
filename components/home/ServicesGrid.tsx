@@ -13,7 +13,12 @@ const servicesList = [
     icon: Code,
     desc: "We build scalable AI-powered applications, high-performance SaaS platforms, and bespoke mobile solutions.",
     stat: "Avg. 3-week MVP delivery",
-    href: "/services/product-engineering"
+    href: "/services/product-engineering",
+    color: "#00b8ac", // Teal
+    rgb: "0, 184, 172",
+    gradient: "linear-gradient(135deg, #00b8ac 0%, #0099ff 100%)",
+    shadow: "0 16px 36px rgba(0, 184, 172, 0.08)",
+    bgGlow: "rgba(0, 184, 172, 0.012)"
   },
   {
     id: "ai-consulting",
@@ -22,7 +27,12 @@ const servicesList = [
     desc: "ROI-focused AI consulting to help SMBs leverage Generative AI, predictive analytics, and intelligent chatbots.",
     stat: "ROI visible in 60 days",
     href: "/services/ai-consulting",
-    featured: true
+    featured: true,
+    color: "#00b8ac", // Teal
+    rgb: "0, 184, 172",
+    gradient: "linear-gradient(135deg, #00b8ac 0%, #10b981 100%)",
+    shadow: "0 16px 36px rgba(0, 184, 172, 0.08)",
+    bgGlow: "rgba(0, 184, 172, 0.012)"
   },
   {
     id: "data-integration",
@@ -30,7 +40,12 @@ const servicesList = [
     icon: Database,
     desc: "We eliminate data silos by securely integrating your CRMs, ERPs, APIs, and marketing platforms into a unified source.",
     stat: "Avg. 2-week integration",
-    href: "/services/data-integration"
+    href: "/services/data-integration",
+    color: "#00b8ac", // Teal
+    rgb: "0, 184, 172",
+    gradient: "linear-gradient(135deg, #00b8ac 0%, #3b82f6 100%)",
+    shadow: "0 16px 36px rgba(0, 184, 172, 0.08)",
+    bgGlow: "rgba(0, 184, 172, 0.012)"
   },
   {
     id: "marketing-automation",
@@ -38,7 +53,12 @@ const servicesList = [
     icon: TrendingUp,
     desc: "Turn leads into loyal customers while you sleep. We design, implement, and optimise robust marketing automation workflows.",
     stat: "3X average lead conversion",
-    href: "/services/marketing-automation"
+    href: "/services/marketing-automation",
+    color: "#00b8ac", // Teal
+    rgb: "0, 184, 172",
+    gradient: "linear-gradient(135deg, #00b8ac 0%, #6366f1 100%)",
+    shadow: "0 16px 36px rgba(0, 184, 172, 0.08)",
+    bgGlow: "rgba(0, 184, 172, 0.012)"
   }
 ];
 
@@ -66,15 +86,26 @@ export default function ServicesGrid() {
               <Link
                 key={service.id}
                 href={service.href}
-                className={`group relative rounded-[12px] p-6 flex flex-col justify-between min-h-[260px] transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_30px_rgba(0,184,172,0.06)] hover:translate-y-[-4px] ${
+                className={`group service-card rounded-[12px] p-6 flex flex-col justify-between min-h-[260px] ${
                   service.featured 
                     ? "bg-surface border border-border-3" 
                     : "bg-surface border border-border"
                 }`}
+                style={{
+                  "--card-hover-shadow": service.shadow,
+                  "--card-accent-rgb": service.rgb,
+                  "--card-accent-color": service.color,
+                  "--card-bg-glow": service.bgGlow,
+                  "--card-gradient": service.gradient,
+                } as React.CSSProperties}
               >
+                {/* Custom glowing accent border lines */}
+                <div className="service-card-accent-line-t" />
+                <div className="service-card-accent-line-l" />
+
                 <div>
                   {/* Icon */}
-                  <div className="flex h-12 w-12 items-center justify-start text-accent mb-6">
+                  <div className="flex h-12 w-12 items-center justify-start mb-6 service-card-icon">
                     <IconComponent className="h-6 w-6" />
                   </div>
 
@@ -92,7 +123,7 @@ export default function ServicesGrid() {
                   <span className="text-[11px] uppercase font-mono tracking-wider text-text-3 font-medium">
                     {service.stat}
                   </span>
-                  <div className="flex items-center gap-1 text-[13px] font-normal text-accent group-hover:text-accent-2 transition-colors">
+                  <div className="flex items-center gap-1 text-[13px] font-normal service-card-learn-more transition-transform duration-200">
                     <span>Learn More</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </div>

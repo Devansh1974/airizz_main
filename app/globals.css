@@ -166,3 +166,103 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans), system-ui, sans-serif;
   letter-spacing: -0.02em;
 }
+
+/* Service Card Hover Highlight System with 3D Depth */
+.service-card {
+  /* Default brand-compatible values (Teal / Cyan) */
+  --card-accent-color: var(--accent); /* #00b8ac */
+  --card-accent-rgb: 0, 184, 172;
+  --card-hover-shadow: 0 16px 36px rgba(0, 184, 172, 0.08);
+  --card-bg-glow: rgba(0, 184, 172, 0.015);
+  --card-gradient: linear-gradient(135deg, #00b8ac 0%, #0099ff 100%);
+
+  position: relative;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.service-card:hover {
+  /* Beautiful 3D subtle rotation, translate and scaling */
+  transform: translateY(-6px) rotateX(2deg) rotateY(-2deg) scale(1.015);
+  border-color: rgba(var(--card-accent-rgb), 0.25) !important;
+  box-shadow: var(--card-hover-shadow);
+  background-color: var(--card-bg-glow);
+}
+
+/* Make child items layout in 3D space */
+.service-card * {
+  transform-style: preserve-3d;
+}
+
+.service-card-accent-line-t {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background: var(--card-gradient);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 12px 12px 0 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.service-card-accent-line-l {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 2.5px;
+  background: var(--card-gradient);
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 12px 0 0 12px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.service-card:hover .service-card-accent-line-t,
+.service-card:hover .service-card-accent-line-l {
+  opacity: 1;
+}
+
+/* Pop-out 3D Parallax effect for interior items */
+.service-card-icon {
+  color: var(--accent);
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover .service-card-icon {
+  color: var(--card-accent-color);
+  transform: translateZ(25px);
+}
+
+.service-card h3,
+.service-card h4 {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover h3,
+.service-card:hover h4 {
+  transform: translateZ(18px);
+}
+
+.service-card p {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover p {
+  transform: translateZ(10px);
+}
+
+.service-card-learn-more {
+  color: var(--accent);
+  transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.service-card:hover .service-card-learn-more {
+  color: var(--card-accent-color) !important;
+}
+
