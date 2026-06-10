@@ -39,6 +39,7 @@ export default function CalendlyFloat() {
 
             {/* Slide-out Sheet */}
             <motion.div
+              data-lenis-prevent
               className="fixed inset-y-0 right-0 z-50 w-full max-w-lg bg-bg-2 border-l border-border shadow-2xl p-6 flex flex-col justify-between"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
