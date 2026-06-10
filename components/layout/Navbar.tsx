@@ -49,15 +49,15 @@ export default function Navbar() {
           WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 h-full flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="AIRIZZ Logo"
-              width={112}
-              height={28}
-              className="h-7 w-auto object-contain"
+              width={128}
+              height={32}
+              className="h-8 w-auto object-contain"
               priority
             />
           </Link>
@@ -195,9 +195,9 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <CTAButton
               href="/contact"
-              variant="outline"
+              variant="primary"
               size="sm"
-              className="border border-border-2 text-text font-medium text-[13px] hover:bg-surface hover:border-border-3 rounded-[6px] px-4 py-[7px]"
+              className="rounded-[6px] px-4 py-[7px] text-[13px]"
             >
               Book a Call
             </CTAButton>

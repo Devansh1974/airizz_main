@@ -10,16 +10,16 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#051329] border-t border-[#1e3a5f]/30 pt-16 pb-8 font-sans text-slate-300">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
         {/* Column 1: Logo & Social */}
         <div className="flex flex-col gap-5">
           <Link href="/" className="inline-block">
             <Image
               src="/logo.png"
               alt="AIRIZZ Logo"
-              width={112}
-              height={28}
-              className="h-7 w-auto object-contain brightness-0 invert"
+              width={128}
+              height={32}
+              className="h-8 w-auto object-contain brightness-0 invert"
             />
           </Link>
           <p className="text-slate-400 text-[14px] leading-relaxed max-w-xs">
@@ -134,7 +134,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="max-w-7xl mx-auto px-6 pt-6 border-t border-[#1e3a5f]/30 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-slate-500">
+      <div className="max-w-6xl mx-auto px-6 pt-6 border-t border-[#1e3a5f]/30 flex flex-col md:flex-row items-center justify-between gap-4 text-[12px] text-slate-500">
         <div>
           &copy; {currentYear} AIRIZZ Consultancy Services Private Limited. All rights reserved.
         </div>

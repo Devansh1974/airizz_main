@@ -59,7 +59,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[85vh] flex items-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-32 lg:pb-24"
+      className="relative flex items-center overflow-hidden pt-8 pb-12 md:pt-10 md:pb-16 lg:pt-12 lg:pb-20"
       style={{
         backgroundColor: "var(--bg2)",
         background: "radial-gradient(ellipse 85% 45% at 50% -10%, rgba(0, 184, 172, 0.05) 0%, rgba(248, 250, 252, 0) 100%)"
@@ -69,7 +69,7 @@ export default function HeroSection() {
       <GridLines />
 
       {/* Hero Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Text Content */}

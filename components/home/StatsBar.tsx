@@ -20,7 +20,7 @@ export default function StatsBar() {
     <section 
       className="relative border-y border-[#1e3a5f]/30 py-16 overflow-hidden bg-[#0a2540] text-white"
     >
-      <div className="max-w-7xl mx-auto px-6 mb-16">
+      <div className="max-w-6xl mx-auto px-6 mb-16">
         {/* Stats Grid */}
         <StaggerChildren className="grid grid-cols-2 lg:grid-cols-4 gap-0">
           {statsData.map((stat, i) => (
@@ -48,9 +48,9 @@ export default function StatsBar() {
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0a2540] to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0a2540] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-[200%] animate-marquee overflow-hidden whitespace-nowrap">
+        <div className="flex w-[200%] animate-marquee whitespace-nowrap">
           {/* First slide */}
-          <div className="flex justify-around min-w-full items-center gap-12 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase">
+          <div className="flex justify-around min-w-full shrink-0 items-center gap-12 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase">
             {industries.map((ind, idx) => (
               <span key={idx} className="transition-colors duration-300">
                 {ind}
@@ -58,7 +58,7 @@ export default function StatsBar() {
             ))}
           </div>
           {/* Duplicate slide for loop */}
-          <div className="flex justify-around min-w-full items-center gap-12 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase">
+          <div className="flex justify-around min-w-full shrink-0 items-center gap-12 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase">
             {industries.map((ind, idx) => (
               <span key={idx + industries.length} className="transition-colors duration-300">
                 {ind}

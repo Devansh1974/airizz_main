@@ -50,7 +50,7 @@ export default function TestimonialsCarousel() {
 
   return (
     <section className="relative py-24 md:py-32 bg-bg-2 border-t border-border overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="mb-16 text-center">
           <FadeUp delay={0.1}>

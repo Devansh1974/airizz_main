@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Target, Eye, TrendingUp, Mail, MapPin, ArrowRight, Handshake, Zap, Rocket } from "lucide-react";
 import { teamData } from "@/content/data/team";
 import { generateSeoMetadata } from "@/lib/seo";
@@ -37,7 +38,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="relative max-w-7xl mx-auto px-6 mb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-10">
+          <div className="lg:col-span-7">
             <FadeUp delay={0.1}>
               <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Our Story</span>
             </FadeUp>
@@ -53,6 +54,20 @@ export default function AboutPage() {
               <p>
                 Today, AIRIZZ works with manufacturers, legal firms, logistics companies, and scaling startups across India. We don't just consult — we build, implement, and stay until the outcomes are real and measurable.
               </p>
+            </FadeUp>
+          </div>
+          <div className="lg:col-span-5 w-full flex justify-center">
+            <FadeUp delay={0.3} className="w-full max-w-md lg:max-w-none">
+              <div className="relative aspect-square w-full overflow-hidden bg-surface border border-border rounded-2xl p-2.5 shadow-[0_8px_30px_rgb(9,30,54,0.06)]">
+                <Image
+                  src="/about-services.png"
+                  alt="AIRIZZ Services Illustration"
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-contain rounded-xl"
+                  priority
+                />
+              </div>
             </FadeUp>
           </div>
         </div>
@@ -211,9 +226,14 @@ export default function AboutPage() {
           {teamData.map((member, idx) => (
             <div key={idx} className="p-8 rounded-[12px] bg-surface border border-border flex flex-col items-center text-center justify-between">
               <div className="flex flex-col items-center">
-                {/* Initials in Accent circle */}
-                <div className="h-16 w-16 rounded-full bg-surface-2 border border-border-2 flex items-center justify-center text-accent font-sans font-bold text-lg mb-6">
-                  {member.initials}
+                {/* Team photo placeholder */}
+                <div className="relative h-20 w-20 rounded-full border border-border overflow-hidden mb-6 bg-surface-2">
+                  <Image
+                    src="/team-placeholder.png"
+                    alt={member.name}
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <h4 className="text-[15px] font-semibold text-text font-sans">{member.name}</h4>
                 <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent mt-1.5 block">{member.role}</span>

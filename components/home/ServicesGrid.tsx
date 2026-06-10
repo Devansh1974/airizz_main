@@ -45,7 +45,7 @@ const servicesList = [
 export default function ServicesGrid() {
   return (
     <section id="services" className="relative py-24 md:py-32 bg-bg border-t border-border scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="mb-20">
           <FadeUp delay={0.1}>
@@ -66,10 +66,10 @@ export default function ServicesGrid() {
               <Link
                 key={service.id}
                 href={service.href}
-                className={`group relative rounded-[12px] p-6 flex flex-col justify-between min-h-[260px] transition-all duration-200 ease-out hover:-translate-y-0.5 ${
+                className={`group relative rounded-[12px] p-6 flex flex-col justify-between min-h-[260px] transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_30px_rgba(0,184,172,0.06)] hover:translate-y-[-4px] ${
                   service.featured 
-                    ? "bg-surface border border-border-3 shadow-none" 
-                    : "bg-surface border border-border shadow-none hover:border-border-2"
+                    ? "bg-surface border border-border-3" 
+                    : "bg-surface border border-border"
                 }`}
               >
                 <div>

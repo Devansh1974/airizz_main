@@ -25,7 +25,7 @@ const painPoints = [
 export default function ProblemSection() {
   return (
     <section className="relative py-24 md:py-32 bg-bg-2 overflow-hidden border-t border-border">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
         <div className="mb-20">
           <FadeUp delay={0.1}>
@@ -48,7 +48,7 @@ export default function ProblemSection() {
                 <FadeUp 
                   key={idx} 
                   delay={0.1 * idx} 
-                  className="flex gap-5 p-6 rounded-[12px] bg-surface border border-border items-start"
+                  className="flex gap-5 p-6 rounded-[12px] bg-surface border border-border items-start transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_30px_rgba(0,184,172,0.06)] hover:translate-y-[-4px]"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface-2 border border-border-2 text-accent">
                     <IconComp className="h-5 w-5" />
