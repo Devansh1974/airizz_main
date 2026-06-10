@@ -14,7 +14,7 @@ export default function TypebotBubble() {
     <Bubble
       typebot="airizz"
       apiHost="https://typebot.io"
-      previewMessage={{ message: "Inquire Anything!", autoShowDelay: 10 }}
+      previewMessage={{ message: "Inquire about Anything!", autoShowDelay: 10 }}
       theme={{ button: { backgroundColor: "#00b8ac" } }}
     />
   );

@@ -9,10 +9,10 @@ import FadeUp from "../animations/FadeUp";
 
 const phrases = [
   "kill manual work",
-  "unify scattered data",
   "automate work",
   "scale intelligently",
   "faster decisions",
+  "ERP systems",
   "build products"
 ];
 
@@ -83,12 +83,12 @@ export default function HeroSection() {
 
             {/* Carousel Headline */}
             <FadeUp delay={0.2} className="w-full">
-              <h1 className="text-text font-semibold leading-[1.1] tracking-tighter mb-6 font-sans text-left flex flex-col items-start" style={{ fontSize: "clamp(2.3rem, 5vw, 4rem)" }}>
+              <h1 className="text-text font-bold leading-[1.1] tracking-tighter mb-6 font-sans text-left flex flex-col items-start" style={{ fontSize: "clamp(2.0rem, 5vw, 4rem)" }}>
                 <span className="block">Engineering</span>
                 <span className="block">the Future</span>
-                <span className="flex flex-wrap items-baseline gap-x-2">
-                  <span>with</span>
-                  <span className="inline-block h-[1.15em] relative overflow-hidden min-w-[240px] sm:min-w-[320px] text-accent align-bottom">
+                <span className="flex flex-wrap items-baseline gap-x-4">
+                  <span>with AI for</span>
+                  <span className="inline-block h-[1.15em] relative overflow-hidden min-w-[280px] sm:min-w-[440px] lg:min-w-[540px] text-accent align-bottom">
                     <AnimatePresence mode="wait">
                       <motion.span
                         key={index}
@@ -96,7 +96,7 @@ export default function HeroSection() {
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: "-80%", opacity: 0 }}
                         transition={{ duration: 0.35, ease: "easeInOut" }}
-                        className="absolute left-0"
+                        className="absolute left-0 whitespace-nowrap"
                       >
                         {phrases[index]}
                       </motion.span>
