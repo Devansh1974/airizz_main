@@ -9,7 +9,7 @@ export default function GridLines() {
       <div className="absolute inset-0 grid-background opacity-[0.03]" />
       
       {/* Subtle bottom fade to create depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-bg" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-bg" />
     </div>
   );
 }

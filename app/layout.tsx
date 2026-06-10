@@ -6,6 +6,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CookieBanner from "@/components/layout/CookieBanner";
 import CalendlyFloat from "@/components/layout/CalendlyFloat";
+import TypebotBubble from "@/components/layout/TypebotBubble";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -82,6 +83,7 @@ export default function RootLayout({
           <Footer />
           <CookieBanner />
           <CalendlyFloat />
+          <TypebotBubble />
         </ScrollProvider>
       </body>
     </html>

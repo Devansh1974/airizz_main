@@ -13,7 +13,7 @@ export default function CalendlyFloat() {
       {/* Floating Action Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-surface border border-accent/30 text-accent shadow-lg shadow-black/40 focus:outline-none cursor-pointer hover:border-accent/60 hover:bg-surface-2 transition-colors"
+        className="fixed bottom-6 left-6 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-surface border border-accent/30 text-accent shadow-lg shadow-black/40 focus:outline-none cursor-pointer hover:border-accent/60 hover:bg-surface-2 transition-colors"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         initial={{ scale: 0, opacity: 0 }}

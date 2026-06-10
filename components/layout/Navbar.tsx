@@ -44,7 +44,7 @@ export default function Navbar() {
         )}
         style={{
           height: "60px",
-          backgroundColor: scrolled ? "rgba(12, 12, 15, 0.85)" : "transparent",
+          backgroundColor: scrolled ? "rgba(255, 255, 255, 0.85)" : "transparent",
           backdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(16px) saturate(180%)" : "none",
         }}

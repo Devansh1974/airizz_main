@@ -52,12 +52,12 @@ export default function CookieBanner() {
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
         >
           <div className="flex gap-3">
-            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-cyan/10 text-brand-cyan">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent-bg text-accent">
               <Shield className="h-5 w-5" />
             </div>
             <div>
-              <h4 className="font-semibold text-white">We Value Your Privacy</h4>
-              <p className="text-xs text-zinc-400 mt-1">
+              <h4 className="font-semibold text-text">We Value Your Privacy</h4>
+              <p className="text-xs text-text-2 mt-1">
                 We use cookies to optimize site features, compile analytics, and customize your experience.
               </p>
             </div>
@@ -65,47 +65,47 @@ export default function CookieBanner() {
 
           {showPreferences ? (
             <motion.div 
-              className="flex flex-col gap-3 pt-2 border-t border-white/5"
+              className="flex flex-col gap-3 pt-2 border-t border-border"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
             >
               <div className="flex items-center justify-between">
                 <div>
-                  <h5 className="text-xs font-semibold text-white">Essential Cookies</h5>
-                  <p className="text-[10px] text-zinc-500">Required for the core functionality of the website.</p>
+                  <h5 className="text-xs font-semibold text-text">Essential Cookies</h5>
+                  <p className="text-[10px] text-text-3">Required for the core functionality of the website.</p>
                 </div>
-                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-zinc-800 text-zinc-400">
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-surface-2 text-text-2">
                   <Check className="h-4 w-4" />
                 </div>
               </div>
 
               <div className="flex items-center justify-between">
                 <div>
-                  <h5 className="text-xs font-semibold text-white">Analytics Cookies</h5>
-                  <p className="text-[10px] text-zinc-500">To monitor site traffic and behavior anonymously.</p>
+                  <h5 className="text-xs font-semibold text-text">Analytics Cookies</h5>
+                  <p className="text-[10px] text-text-3">To monitor site traffic and behavior anonymously.</p>
                 </div>
                 <input
                   type="checkbox"
                   checked={preferences.analytical}
                   onChange={(e) => setPreferences({ ...preferences, analytical: e.target.checked })}
-                  className="rounded border-zinc-700 bg-zinc-900 text-brand-cyan focus:ring-brand-cyan h-4 w-4 cursor-pointer"
+                  className="rounded border-border bg-surface text-accent focus:ring-accent h-4 w-4 cursor-pointer"
                 />
               </div>
 
               <div className="flex items-center justify-between">
                 <div>
-                  <h5 className="text-xs font-semibold text-white">Marketing Cookies</h5>
-                  <p className="text-[10px] text-zinc-500">Used to deliver target campaigns and updates.</p>
+                  <h5 className="text-xs font-semibold text-text">Marketing Cookies</h5>
+                  <p className="text-[10px] text-text-3">Used to deliver target campaigns and updates.</p>
                 </div>
                 <input
                   type="checkbox"
                   checked={preferences.marketing}
                   onChange={(e) => setPreferences({ ...preferences, marketing: e.target.checked })}
-                  className="rounded border-zinc-700 bg-zinc-900 text-brand-cyan focus:ring-brand-cyan h-4 w-4 cursor-pointer"
+                  className="rounded border-border bg-surface text-accent focus:ring-accent h-4 w-4 cursor-pointer"
                 />
               </div>
 
-              <div className="flex gap-2 mt-2 pt-2 border-t border-white/5">
+              <div className="flex gap-2 mt-2 pt-2 border-t border-border">
                 <CTAButton
                   variant="outline"
                   size="sm"
@@ -144,7 +144,7 @@ export default function CookieBanner() {
               </CTAButton>
               <button
                 onClick={() => setShowPreferences(true)}
-                className="flex items-center justify-center p-2 rounded-full hover:bg-white/5 text-zinc-400 hover:text-white transition-colors cursor-pointer"
+                className="flex items-center justify-center p-2 rounded-full hover:bg-surface-2 text-text-2 hover:text-text transition-colors cursor-pointer"
                 title="Customize preferences"
               >
                 <Settings className="h-4 w-4" />
