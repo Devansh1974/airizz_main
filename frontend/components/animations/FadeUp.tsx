@@ -9,6 +9,7 @@ interface FadeUpProps {
   duration?: number;
   yOffset?: number;
   className?: string;
+  style?: React.CSSProperties;
 }
 
 export default function FadeUp({
@@ -17,6 +18,7 @@ export default function FadeUp({
   duration = 0.6,
   yOffset = 16,
   className,
+  style,
 }: FadeUpProps) {
   return (
     <motion.div
@@ -29,6 +31,7 @@ export default function FadeUp({
         ease: [0.16, 1, 0.3, 1], // easeOutExpo
       }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
