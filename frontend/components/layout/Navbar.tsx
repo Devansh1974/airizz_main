@@ -56,9 +56,9 @@ export default function Navbar() {
             <Image
               src="/logo.png"
               alt="AIRIZZ Logo"
-              width={128}
-              height={32}
-              className="h-8 w-auto object-contain"
+              width={150}
+              height={50}
+              className="h-[45px] w-auto object-contain"
               priority
             />
           </Link>
@@ -216,7 +216,7 @@ export default function Navbar() {
               href="/contact"
               variant="primary"
               size="sm"
-              className="rounded-[6px] px-4 py-[7px] text-[13px]"
+              className="rounded-[6px] px-5 py-[10px] text-[13.5px] font-bold"
             >
               Book a Call
             </CTAButton>
