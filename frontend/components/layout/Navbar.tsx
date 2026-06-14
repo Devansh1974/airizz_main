@@ -11,6 +11,7 @@ import useScrolled from "@/hooks/useScrolled";
 import CTAButton from "../shared/CTAButton";
 
 const services = [
+  { name: "All Services Overview", href: "/services", desc: "Explore our four core practice areas and pricing playbooks." },
   { name: "Product Engineering", href: "/services/product-engineering", desc: "Build scalable AI-powered applications & SaaS." },
   { name: "AI Consulting", href: "/services/ai-consulting", desc: "Generative AI, analytics, & chatbots for SMBs." },
   { name: "Data Integration", href: "/services/data-integration", desc: "Eliminating data silos securely across APIs." },
@@ -100,17 +101,25 @@ export default function Navbar() {
                     transition={{ duration: 0.15 }}
                   >
                     {services.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="group flex flex-col p-2 rounded-lg hover:bg-surface-2 transition-colors"
-                      >
-                        <span className="text-[13px] font-semibold text-text group-hover:text-accent transition-colors flex items-center gap-1">
-                          {item.name}
-                          <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-accent" />
-                        </span>
-                        <span className="text-[11px] text-text-2 mt-0.5 leading-relaxed">{item.desc}</span>
-                      </Link>
+                      <React.Fragment key={item.name}>
+                        <Link
+                          href={item.href}
+                          className={cn(
+                            "group flex flex-col p-2 rounded-lg hover:bg-surface-2 transition-colors",
+                            item.href === "/services" && "bg-accent/5 hover:bg-accent/10 border border-accent/10 mb-1"
+                          )}
+                        >
+                          <span className={cn(
+                            "text-[13px] font-semibold text-text group-hover:text-accent transition-colors flex items-center gap-1",
+                            item.href === "/services" && "text-accent font-bold"
+                          )}>
+                            {item.name}
+                            <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-accent animate-none" />
+                          </span>
+                          <span className="text-[11px] text-text-2 mt-0.5 leading-relaxed">{item.desc}</span>
+                        </Link>
+                        {item.href === "/services" && <div className="h-[1px] bg-border my-1" />}
+                      </React.Fragment>
                     ))}
                   </motion.div>
                 )}
@@ -279,15 +288,26 @@ export default function Navbar() {
                   <span className="text-xs font-mono uppercase tracking-wider text-text-3 font-bold block mb-2">Services</span>
                   <div className="grid gap-3.5 pl-3 border-l border-border">
                     {services.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="flex flex-col"
-                      >
-                        <span className="text-sm font-medium text-text hover:text-accent transition-colors">{item.name}</span>
-                        <span className="text-[10px] text-text-2 mt-0.5">{item.desc}</span>
-                      </Link>
+                      <React.Fragment key={item.name}>
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={cn(
+                            "flex flex-col rounded-lg p-1.5 transition-all",
+                            item.href === "/services" && "bg-accent/5 border border-accent/10 px-2.5 py-2 mb-1.5"
+                          )}
+                        >
+                          <span className={cn(
+                            "text-sm font-medium text-text hover:text-accent transition-colors flex items-center gap-1",
+                            item.href === "/services" && "text-accent font-bold"
+                          )}>
+                            {item.name}
+                            {item.href === "/services" && <ArrowRight className="h-3.5 w-3.5 text-accent inline" />}
+                          </span>
+                          <span className="text-[10px] text-text-2 mt-0.5 leading-relaxed">{item.desc}</span>
+                        </Link>
+                        {item.href === "/services" && <div className="h-[1px] bg-border my-1" />}
+                      </React.Fragment>
                     ))}
                   </div>
                 </motion.div>
