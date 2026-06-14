@@ -117,23 +117,23 @@ export default function HeroSection() {
             <FadeUp delay={0.4}>
               <div className="flex flex-wrap items-center gap-4 justify-start">
                 <CTAButton
-                  href="/contact"
+                  href="/estimate"
                   variant="primary"
-                  className="px-[22px] py-[10px] text-sm font-medium rounded-[6px]"
+                  className=" px-[25px] py-[15px] text-md font-bold rounded-[6px]"
                 >
-                  Book Strategy Call
+                Your Project Estimation
                 </CTAButton>
                 <CTAButton
                   href="/services"
                   variant="secondary"
-                  className="px-[22px] py-[10px] text-sm font-medium rounded-[6px]"
+                  className="px-[25px] py-[15px] text-md font-bold rounded-[6px]"
                 >
                   Explore Services
                 </CTAButton>
               </div>
 
               <div className="font-mono text-[11px] text-text-3 tracking-[0.05em] mt-6 text-left">
-                No commitment · Free 30-min call · Response in 24hrs
+                Free Cost Estimation Tool· Book Free 30-min call · Response in 24hrs
               </div>
             </FadeUp>
           </div>
