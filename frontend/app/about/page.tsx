@@ -222,7 +222,64 @@ export default function AboutPage() {
           </FadeUp>
         </div>
 
-        <div className="max-w-3xl mx-auto relative pl-8 border-l border-border flex flex-col gap-12">
+        {/* Desktop Horizontal Timeline */}
+        <div className="hidden lg:block relative pt-8">
+          {/* Horizontal line connecting the dots */}
+          <div className="absolute left-[9px] w-[75%] top-[8px] h-[2px] bg-border" />
+          
+          <StaggerChildren className="grid grid-cols-4 gap-8">
+            {/* Milestone 1 */}
+            <div className="relative">
+              <div className="absolute top-0 left-0 h-4.5 w-4.5 rounded-full bg-accent border-4 border-bg" />
+              <div className="pt-8">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-accent">2023</span>
+                <h4 className="text-[15px] font-semibold text-text mt-2 font-sans">Founded</h4>
+                <p className="text-text-2 text-xs mt-1.5 leading-relaxed">
+                  AIRIZZ Consultancy Services Private Limited incorporated.
+                </p>
+              </div>
+            </div>
+
+            {/* Milestone 2 */}
+            <div className="relative">
+              <div className="absolute top-0 left-0 h-4.5 w-4.5 rounded-full bg-accent border-4 border-bg" />
+              <div className="pt-8">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-accent">2024</span>
+                <h4 className="text-[15px] font-semibold text-text mt-2 font-sans">First Enterprise Client</h4>
+                <p className="text-text-2 text-xs mt-1.5 leading-relaxed">
+                  Delivered data integration for a Mumbai logistics firm.
+                </p>
+              </div>
+            </div>
+
+            {/* Milestone 3 */}
+            <div className="relative">
+              <div className="absolute top-0 left-0 h-4.5 w-4.5 rounded-full bg-accent border-4 border-bg" />
+              <div className="pt-8">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-accent">2025</span>
+                <h4 className="text-[15px] font-semibold text-text mt-2 font-sans">Industry Expansion</h4>
+                <p className="text-text-2 text-xs mt-1.5 leading-relaxed">
+                  Extended to Legal & Finance and Manufacturing verticals.
+                </p>
+              </div>
+            </div>
+
+            {/* Milestone 4 */}
+            <div className="relative">
+              <div className="absolute top-0 left-0 h-4.5 w-4.5 rounded-full bg-accent border-4 border-bg" />
+              <div className="pt-8">
+                <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-accent">2026</span>
+                <h4 className="text-[15px] font-semibold text-text mt-2 font-sans">Scaling Up</h4>
+                <p className="text-text-2 text-xs mt-1.5 leading-relaxed">
+                  7+ enterprise deployments, building proprietary AI products.
+                </p>
+              </div>
+            </div>
+          </StaggerChildren>
+        </div>
+
+        {/* Mobile Vertical Timeline */}
+        <div className="lg:hidden max-w-3xl mx-auto relative pl-8 border-l border-border flex flex-col gap-12">
           {/* Milestone 1 */}
           <div className="relative">
             <div className="absolute -left-[37px] top-1.5 h-4 w-4 rounded-full bg-accent border-4 border-bg" />

@@ -12,6 +12,18 @@ const industries = [
   "Finance",
   "Legal Services",
   "Retail",
+  "Logistics",
+  "Manufacturing",
+  "Healthcare",
+  "Finance",
+  "Legal Services",
+  "Retail",
+  "Logistics",
+  "Manufacturing",
+  "Healthcare",
+  "Finance",
+  "Legal Services",
+  "Retail",
   "Logistics"
 ];
 
@@ -48,7 +60,7 @@ export default function StatsBar() {
         <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#0a2540] to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#0a2540] to-transparent z-10 pointer-events-none" />
 
-        <div className="flex w-[200%] animate-marquee whitespace-nowrap">
+        <div className="flex w-max animate-marquee whitespace-nowrap">
           {/* First slide */}
           <div className="flex justify-start shrink-0 items-center gap-8 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase pr-8">
             {industries.map((ind, idx) => (
