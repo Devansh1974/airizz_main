@@ -11,7 +11,7 @@ import useScrolled from "@/hooks/useScrolled";
 import CTAButton from "../shared/CTAButton";
 
 const services = [
-  { name: "All Services Overview", href: "/services", desc: "Explore our four core practice areas and pricing playbooks." },
+  { name: "All Services", href: "/services", desc: "Explore our four core practice areas and pricing." },
   { name: "Product Engineering", href: "/services/product-engineering", desc: "Build scalable AI-powered applications & SaaS." },
   { name: "AI Consulting", href: "/services/ai-consulting", desc: "Generative AI, analytics, & chatbots for SMBs." },
   { name: "Data Integration", href: "/services/data-integration", desc: "Eliminating data silos securely across APIs." },
