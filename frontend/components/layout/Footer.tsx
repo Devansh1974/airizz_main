@@ -104,6 +104,11 @@ export default function Footer() {
               </Link>
             </li>
             <li>
+              <Link href="/estimate" className="text-slate-400 hover:text-white transition-colors">
+                Cost Estimator
+              </Link>
+            </li>
+            <li>
               <Link href="/careers" className="text-slate-400 hover:text-white transition-colors">
                 Careers
               </Link>

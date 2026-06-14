@@ -189,6 +189,16 @@ export default function Navbar() {
             >
               Blog
             </Link>
+
+            <Link
+              href="/estimate"
+              className={cn(
+                "text-[14px] transition-colors duration-200",
+                isLinkActive("/estimate") ? "text-text font-medium" : "text-text-2 hover:text-text"
+              )}
+            >
+              Estimator
+            </Link>
           </nav>
 
           {/* Right Action Button */}
@@ -331,6 +341,13 @@ export default function Navbar() {
                     className="text-base font-medium text-text hover:text-accent"
                   >
                     Blog
+                  </Link>
+                  <Link
+                    href="/estimate"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="text-base font-medium text-text hover:text-accent"
+                  >
+                    Estimator
                   </Link>
                 </motion.div>
 
