@@ -36,7 +36,7 @@
   --letter-spacing-tight: -0.025em;
   --letter-spacing-snug: -0.015em;
 
-  --animate-marquee: marquee 30s linear infinite;
+  --animate-marquee: marquee 18s linear infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 
   @keyframes marquee {

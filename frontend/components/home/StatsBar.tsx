@@ -50,7 +50,7 @@ export default function StatsBar() {
 
         <div className="flex w-[200%] animate-marquee whitespace-nowrap">
           {/* First slide */}
-          <div className="flex justify-around min-w-full shrink-0 items-center gap-12 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase">
+          <div className="flex justify-start shrink-0 items-center gap-8 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase pr-8">
             {industries.map((ind, idx) => (
               <span key={idx} className="transition-colors duration-300">
                 {ind}
@@ -58,7 +58,7 @@ export default function StatsBar() {
             ))}
           </div>
           {/* Duplicate slide for loop */}
-          <div className="flex justify-around min-w-full shrink-0 items-center gap-12 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase">
+          <div className="flex justify-start shrink-0 items-center gap-8 text-blue-200/80 text-xs md:text-sm font-semibold tracking-widest uppercase pr-8">
             {industries.map((ind, idx) => (
               <span key={idx + industries.length} className="transition-colors duration-300">
                 {ind}

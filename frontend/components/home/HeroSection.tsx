@@ -73,7 +73,7 @@ export default function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: Text Content */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="lg:col-span-6 flex flex-col items-start text-left">
             {/* Eyebrow Pill */}
             <FadeUp delay={0.1}>
               <div className="inline-flex items-center px-3 py-1 rounded-full border border-border bg-surface text-[11px] font-mono font-medium text-text-3 uppercase mb-6">
@@ -139,7 +139,7 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: Carousel of Mockups */}
-          <div className="lg:col-span-5 w-full flex flex-col items-center justify-center">
+          <div className="lg:col-span-6 w-full flex flex-col items-center justify-center">
             <FadeUp delay={0.3} className="w-full max-w-md lg:max-w-none">
               
               {/* Card Container Frame */}

@@ -39,10 +39,10 @@ const painPoints = [
 
 export default function ProblemSection() {
   return (
-    <section className="relative py-24 md:py-32 bg-bg-2 overflow-hidden border-t border-border">
+    <section className="relative py-16 md:py-20 bg-bg-2 overflow-hidden border-t border-border">
       <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
-        <div className="mb-20">
+        <div className="mb-12">
           <FadeUp delay={0.1}>
             <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Operational Hurdles</span>
           </FadeUp>
@@ -88,20 +88,16 @@ export default function ProblemSection() {
             })}
           </div>
 
-          {/* Right Column: Statement & Copy */}
-          <div className="lg:col-span-5 flex flex-col gap-6">
-            <FadeUp delay={0.2}>
-              <h3 className="font-sans font-semibold text-text tracking-tight" style={{ fontSize: "clamp(1.6rem, 3vw, 2.4rem)" }}>
-                Stop Guessing. <span className="text-accent">Start Scaling.</span>
-              </h3>
-            </FadeUp>
-            <FadeUp delay={0.3} className="flex flex-col gap-4 text-text-2 text-[15px] font-normal leading-relaxed">
-              <p>
-                Is your business trapped in data silos? Are your marketing and sales teams wasting hours on manual tasks? In the modern digital landscape, fragmented systems and outdated processes don't just cost time — they cost revenue.
-              </p>
-              <p className="text-[14px] text-text-3">
-                At AIRIZZ, we bridge the gap between your raw data and actionable growth.
-              </p>
+          {/* Right Column: Connected Growth Illustration */}
+          <div className="lg:col-span-5 flex justify-center items-center">
+            <FadeUp delay={0.2} className="w-full max-w-[480px]">
+              <div className="relative w-full overflow-hidden bg-surface border border-border rounded-2xl p-2.5 shadow-[0_8px_30px_rgba(9,30,54,0.03)] flex flex-col justify-center">
+                <img
+                  src="/connected-growth.png"
+                  alt="Stop Guessing. Start Scaling. Data Connected, Growth Unlocked."
+                  className="w-full h-auto object-contain rounded-xl"
+                />
+              </div>
             </FadeUp>
           </div>
         </div>
