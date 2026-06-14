@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Target, Eye, TrendingUp, Mail, MapPin, ArrowRight, Handshake, Zap, Rocket } from "lucide-react";
-import { teamData } from "@/content/data/team";
+import TeamSection from "@/components/about/TeamSection";
 import { generateSeoMetadata } from "@/lib/seo";
 import FadeUp from "@/components/animations/FadeUp";
 import StaggerChildren from "@/components/animations/StaggerChildren";
@@ -212,45 +212,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20 border-t border-border">
-        <div className="mb-16">
-          <FadeUp delay={0.1}>
-            <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent">Who We Are</span>
-          </FadeUp>
-          <FadeUp delay={0.2}>
-            <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-text mt-2 font-sans">The Team</h2>
-          </FadeUp>
-        </div>
-
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {teamData.map((member, idx) => (
-            <div key={idx} className="p-8 rounded-[12px] bg-surface border border-border flex flex-col items-center text-center justify-between">
-              <div className="flex flex-col items-center">
-                {/* Team photo placeholder */}
-                <div className="relative h-20 w-20 rounded-full border border-border overflow-hidden mb-6 bg-surface-2">
-                  <Image
-                    src="/team-placeholder.png"
-                    alt={member.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <h4 className="text-[15px] font-semibold text-text font-sans">{member.name}</h4>
-                <span className="text-[11px] font-mono font-medium uppercase tracking-wider text-accent mt-1.5 block">{member.role}</span>
-                <p className="text-text-2 text-xs mt-4 leading-relaxed max-w-xs font-sans">{member.bio}</p>
-              </div>
-              
-              <Link href={member.linkedin} className="text-text-3 hover:text-text transition-colors mt-6 text-[11px] font-mono font-medium uppercase tracking-wider">
-                LinkedIn Profile
-              </Link>
-            </div>
-          ))}
-        </StaggerChildren>
-
-        <FadeUp delay={0.4} className="mt-12 text-center text-text-3 text-xs italic">
-          Note: Placeholder team representation. Real engineering bios loaded on project engagement.
-        </FadeUp>
-      </section>
+      <TeamSection />
 
       {/* Timeline Section */}
       <section className="max-w-7xl mx-auto px-6 py-20 border-t border-border">
