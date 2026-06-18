@@ -18,7 +18,8 @@ const fallbackResponses: Record<string, string> = {
   process: "Our operational process includes: 1) Discovery and strategy consultation, 2) Process and system analysis, 3) Solution architecture, 4) Implementation, and 5) Optimization and scaling.",
   "mobile apps": "We design and develop custom mobile applications for iOS and Android platforms, built to scale and integrate seamlessly with AI layers and your databases.",
   "web apps": "We build premium custom web applications, SaaS products, and enterprise software solutions using modern frameworks to automate business processes.",
-  "ai/ml projects": "Our AI/ML work covers generative AI strategy, private LLM deployments, RAG systems, intelligent chatbots, AI agents, and predictive analytics tailored to business workflows."
+  "ai/ml projects": "Our AI/ML work covers generative AI strategy, private LLM deployments, RAG systems, intelligent chatbots, AI agents, and predictive analytics tailored to business workflows.",
+  careers: "You can explore current opportunities on our Careers page: https://airizz.co/careers"
 };
 
 // Help match keywords to fallback keys
@@ -27,6 +28,9 @@ function getFallbackResponse(message: string): string {
   
   if (query.includes("pricing") || query.includes("cost") || query.includes("price") || query.includes("calculator") || query.includes("estimate")) {
     return fallbackResponses.pricing;
+  }
+  if (query.includes("career") || query.includes("job") || query.includes("intern") || query.includes("hiring")) {
+    return fallbackResponses.careers;
   }
   if (query.includes("service") || query.includes("offer") || query.includes("what do you do")) {
     return fallbackResponses.services;
@@ -57,7 +61,7 @@ function getFallbackResponse(message: string): string {
   }
 
   // General default fallback
-  return fallbackResponses.services;
+  return "I don't currently have information about that topic. Please contact the AIRIZZ team directly at connect@airizz.co for accurate details. We have noted your details and will reach out to you!";
 }
 
 const chatbotRouter = Router();
