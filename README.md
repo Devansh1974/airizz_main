@@ -1,7 +1,13 @@
 # Airizz Monorepo
 
-Welcome to the Airizz workspace. This repository has been structured as a monorepo consisting of:
+## Deployments
 
+- **Frontend URL**: [https://airizz-main.vercel.app/](https://airizz-main.vercel.app/)
+- **Backend URL**: [https://airizz-main.onrender.com](https://airizz-main.onrender.com)
+
+---
+
+Welcome to the Airizz workspace. This repository has been structured as a monorepo consisting of:
 - **`frontend/`**: The Next.js web application.
 - **`backend/`**: The Node.js Express backend application (using TypeScript).
 
@@ -60,3 +66,5 @@ You can run both development servers concurrently or individually from the root 
 
 - **Frontend**: Built with Next.js, React, TailwindCSS, and TypeScript.
 - **Backend**: Built with Node.js, Express, and TypeScript.
+- **Custom AI Chatbot**: Floating layout overlay powered by the Groq API (`llama-3.1-8b-instant`), supporting custom client-side intent routing, rate limiting, and direct in-place updates to Google Sheets via Webhooks.
+
