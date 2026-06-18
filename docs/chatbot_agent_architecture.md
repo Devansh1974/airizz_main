@@ -9,7 +9,7 @@ The AIRIZZ chatbot is a layout-level floating overlay designed to engage visitor
 
 ### Core Principles:
 - **API Cost & Limit Optimization**: Leverages client-side intent processing to execute page redirections and navigation triggers locally with **zero API request costs**.
-- **Consolidated File Architecture**: The entire integration is written in exactly two modular, self-contained files: [ChatWidget.tsx](file:///Users/devanshsingh/Desktop/Airizz_main/airizz-website/frontend/components/layout/ChatWidget.tsx) (frontend) and [chatbot.ts](file:///Users/devanshsingh/Desktop/Airizz_main/airizz-website/backend/src/routes/chatbot.ts) (backend).
+- **Consolidated File Architecture**: The integration is primarily implemented in [ChatWidget.tsx](../frontend/components/layout/ChatWidget.tsx) (frontend) and [chatbot.ts](../backend/src/routes/chatbot.ts) (backend), and wired into the app via the standard Next.js layout and Express router setup.
 - **Zero Disruptive Changes**: Sits as an overlay, maintaining 100% compatibility with existing routing, styling (TailwindCSS/CSS themes), and SEO systems.
 
 ---
@@ -52,7 +52,7 @@ graph TD
 ---
 
 ## 3. High-Confidence Intent Detector (Client-Side)
-To avoid excessive API cost, every user message undergoes a regex and word classification filter in [ChatWidget.tsx](file:///Users/devanshsingh/Desktop/Airizz_main/airizz-website/frontend/components/layout/ChatWidget.tsx) before sending to Groq:
+To avoid excessive API cost, every user message undergoes a regex and word classification filter in [ChatWidget.tsx](../frontend/components/layout/ChatWidget.tsx) before sending to Groq:
 
 1. **NAVIGATION**: 
    - **Command Verb Check**: Scans for command verbs like `"take me to"`, `"go to"`, `"visit"`, `"open"`, `"show me"`.
@@ -81,7 +81,7 @@ To avoid excessive API cost, every user message undergoes a regex and word class
 ---
 
 ## 4. Backend Resiliency & Groq integration
-Located in [chatbot.ts](file:///Users/devanshsingh/Desktop/Airizz_main/airizz-website/backend/src/routes/chatbot.ts), the chat endpoint uses a **3-tier resilience stack**:
+Located in [chatbot.ts](../backend/src/routes/chatbot.ts), the chat endpoint uses a **3-tier resilience stack**:
 
 - **Tier 1 — Primary API Call**:
   - **Model**: `llama-3.1-8b-instant` (via Groq Cloud API completions).
@@ -152,20 +152,20 @@ function doPost(e) {
 1. **User lands on Homepage**: A floating teal chat bubble displays in the bottom-right corner.
 2. **First Interaction**: Clicking the bubble opens the overlay. Since `sessionStorage` is empty, the `LeadForm` is shown.
 3. **Form Submission**:
-   - User inputs: Name: *Devansh*, Company: *Aires Co*, Email: *devansh@aires.co*, Brief: *A booking platform*.
+   - User inputs: Name: *Jane*, Company: *Example Co*, Email: *jane@example.com*, Brief: *A booking platform*.
    - The form is validated client-side and saved to `sessionStorage`.
    - A POST request is sent to `/api/leads` containing user details.
    - The Google Sheets Apps Script receives the POST and appends a row (Row 1).
-   - The UI transitions with typing indicators to greet: *"Hi Devansh! Great to meet you. So you're working on a booking platform..."*
+   - The UI transitions with typing indicators to greet: *"Hi Jane! Great to meet you. So you're working on a booking platform..."*
 4. **Redirection Trigger**:
    - User types: *"cost estimation"*
    - The intent detector intercepts this as a high-confidence `NAVIGATION` request matching the estimator page.
-   - A `1.0s` thinking delay is simulated on the client side, then a new tab opens `https://airizz.co/estimate`, and the bot outputs: *"Opening Estimator for you in a new tab!"*
+   - A `1.0s` thinking delay is simulated on the client side, then a new tab opens `/estimate`, and the bot outputs: *"Opening Estimator for you in a new tab!"*
 5. **Silent Lead Enrichment**:
    - User returns to the chat and types: *"It should also have Stripe integration and Razorpay."*
    - The intent detector classifies this as a `LEAD_FOLLOWUP` intent (significant length containing key project keywords).
    - The frontend appends the string to the local `productBrief` and silently POSTs the enriched object back to `/api/leads`.
-   - The spreadsheet Apps Script finds the row matching `devansh@aires.co` and updates Column I in-place (no duplicate rows created).
+   - The spreadsheet Apps Script finds the row matching `jane@example.com` and updates Column I in-place (no duplicate rows created).
    - The updated context is sent to the `/api/chat` backend proxy to query Groq.
 6. **Conversational Reply**:
    - Groq receives the system prompt with the updated context, understands they want Stripe and Razorpay integrations, and replies using llama-3.1-8b-instant after simulating a natural typing delay.

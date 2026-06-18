@@ -2,6 +2,11 @@ import { Router, Request, Response } from 'express';
 import rateLimit from 'express-rate-limit';
 import { saveLeadToSheets } from '../services/googleScriptService';
 
+// Resolve Webhook script URL globally once at startup to avoid shared mutation race conditions
+if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
+  process.env.GOOGLE_SCRIPT_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
+}
+
 // Fallback responses matching AIRIZZ knowledge base topics
 const fallbackResponses: Record<string, string> = {
   services: "AIRIZZ specializes in AI Consulting, Marketing Automation, Data Integration, Product Engineering, Workflow Automation, and custom AI Agents to help businesses transform fragmented systems into scalable, revenue-generating operations.",
@@ -41,7 +46,7 @@ function getFallbackResponse(message: string): string {
   if (query.includes("process") || query.includes("how it works") || query.includes("step") || query.includes("method")) {
     return fallbackResponses.process;
   }
-  if (query.includes("mobile") || query.includes("app") || query.includes("ios") || query.includes("android")) {
+  if (query.includes("mobile") || /\bapps?\b/.test(query) || query.includes("ios") || query.includes("android")) {
     return fallbackResponses["mobile apps"];
   }
   if (query.includes("web") || query.includes("website") || query.includes("saas") || query.includes("platform")) {
@@ -83,10 +88,6 @@ chatbotRouter.post('/api/leads', async (req: Request, res: Response) => {
       return res.status(400).json({ error: "Missing required fields (name, email)" });
     }
 
-    // Set script URL to GOOGLE_SHEETS_WEBHOOK_URL or fallback to GOOGLE_SCRIPT_URL
-    if (process.env.GOOGLE_SHEETS_WEBHOOK_URL) {
-      process.env.GOOGLE_SCRIPT_URL = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
-    }
 
     const timestamp = sessionStart ? new Date(sessionStart).toLocaleString("en-US", { timeZone: "Asia/Kolkata" }) : new Date().toLocaleString("en-US", { timeZone: "Asia/Kolkata" });
 
@@ -106,7 +107,10 @@ chatbotRouter.post('/api/leads', async (req: Request, res: Response) => {
     return res.status(200).json({ success: true });
   } catch (error: any) {
     console.error("❌ Error saving chatbot lead:", error);
-    return res.status(500).json({ error: "Failed to save lead info", details: error.message });
+    return res.status(500).json({ 
+      error: "Failed to save lead info",
+      ...(process.env.NODE_ENV === "development" ? { details: error.message } : {})
+    });
   }
 });
 

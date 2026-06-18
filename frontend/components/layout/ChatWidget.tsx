@@ -6,10 +6,8 @@ import {
   Send, 
   X, 
   Sparkles, 
-  AlertCircle, 
   ArrowRight,
-  Loader2,
-  ExternalLink
+  Loader2
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -395,13 +393,13 @@ export default function ChatWidget() {
     const intent = detectIntent(textToSend, !!lead);
 
     if (intent.type === "NAVIGATION") {
+      // Open link in new tab immediately (avoids popup blockers + prevents reverse-tabnabbing)
+      window.open(intent.targetUrl, "_blank", "noopener,noreferrer");
+
       setIsBotTyping(true);
       // Canned response buffer delay for natural flow
       await new Promise(resolve => setTimeout(resolve, 1000));
       setIsBotTyping(false);
-
-      // Open link in new tab
-      window.open(intent.targetUrl, "_blank");
       
       // Add feedback chat message immediately
       const navReplyMsg: Message = {
@@ -440,6 +438,9 @@ export default function ChatWidget() {
   };
 
   const handleQuickOptionClick = async (path: string, label: string) => {
+    // Open link in new tab immediately (avoids popup blockers + prevents reverse-tabnabbing)
+    window.open(path, "_blank", "noopener,noreferrer");
+
     // Log user choice
     const userClickMsg: Message = {
       role: "user",
@@ -452,8 +453,6 @@ export default function ChatWidget() {
     // Simulate typing buffer
     await new Promise(resolve => setTimeout(resolve, 1000));
     setIsBotTyping(false);
-
-    window.open(path, "_blank");
     
     const botNavMsg: Message = {
       role: "assistant",
