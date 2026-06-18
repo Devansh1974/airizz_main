@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import { calculateBudgetRange } from './utils/estimatorLogic';
 import { generateAIReport } from './services/groqService';
 import { saveLeadToSheets } from './services/googleScriptService';
+import chatbotRouter from './routes/chatbot';
 
 // Load environment variables
 dotenv.config();
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 5001;
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(chatbotRouter);
 
 // Basic health check route
 app.get('/api/health', (req, res) => {
