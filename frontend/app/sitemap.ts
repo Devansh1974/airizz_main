@@ -1,4 +1,5 @@
 import { MetadataRoute } from "next";
+import { getAllBlogPosts, getAllCaseStudies } from "@/lib/content";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://airizz.co";
@@ -30,23 +31,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "manufacturing",
   ];
 
-  const caseStudies = [
-    "logistics-billing-automation",
-    "legal-onboarding-automation",
-    "manufacturer-data-unification",
-  ];
-
-  const blogPosts = [
-    "ai-automation-indian-smbs",
-    "marketing-automation-legal-firms",
-  ];
+  // Dynamically load blogs and case studies from the filesystem
+  const blogPosts = getAllBlogPosts();
+  const caseStudies = getAllCaseStudies();
 
   const allUrls = [
     ...staticRoutes.map((route) => `${baseUrl}${route}`),
     ...services.map((s) => `${baseUrl}/services/${s}`),
     ...industries.map((i) => `${baseUrl}/industries/${i}`),
-    ...caseStudies.map((cs) => `${baseUrl}/case-studies/${cs}`),
-    ...blogPosts.map((b) => `${baseUrl}/blog/${b}`),
+    ...caseStudies.map((cs) => `${baseUrl}/case-studies/${cs.slug}`),
+    ...blogPosts.map((b) => `${baseUrl}/blog/${b.slug}`),
   ];
 
   return allUrls.map((url) => ({

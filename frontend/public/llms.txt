@@ -1,0 +1,32 @@
+# AIRIZZ - AI Consulting & Automation for Small and Medium Businesses
+
+AIRIZZ (https://airizz.co) is a premier AI consulting, systems design, and workflow automation agency tailored for small-to-medium businesses (SMBs), traditional trade lines, manufacturing units, and professional services (legal and financial firms) in India. 
+
+We audit manual operational bottlenecks, design lightweight data pipelines, integrate disconnected software systems, and implement custom AI agents to save hours and cut costs.
+
+## Core Products & Services
+
+- [AI Consulting](https://airizz.co/services/ai-consulting) - Operations and workflow audits, ROI calculations, and practical technology roadmap design.
+- [Product Engineering](https://airizz.co/services/product-engineering) - End-to-end custom software design, LLM agent integration, and tailor-made business tools.
+- [Cusfi](https://airizz.co/products) - Our proprietary AI customer support, lead engagement, and booking engine running on WhatsApp, Web, and SMS.
+- [Data Integration](https://airizz.co/services/data-integration) - Unifying inventory systems, CRM, POS, and financial software to resolve fragmented workflows.
+- [Marketing Automation](https://airizz.co/services/marketing-automation) - Automated lead nurturing, invoice tracking, client onboarding, and referral management.
+
+## Real-world Case Studies
+
+- [Logistics Billing Automation](https://airizz.co/case-studies/logistics-billing-automation) - Eliminating spreadsheet overhead and integrating CRM for automated bill generation.
+- [Legal Client Onboarding](https://airizz.co/case-studies/legal-onboarding-automation) - Speeding up KYC compliance and onboarding document collection for legal practices.
+- [Manufacturer Data Unification](https://airizz.co/case-studies/manufacturer-data-unification) - Consolidating disparate ERP records into centralized data stores for business intelligence.
+
+## Technical Resources & Journal (Blog)
+
+- [AI Automation for Small Business: Where to Start](https://airizz.co/blog/ai-automation-small-business) - A practical, jargon-free guide on identifying ROI-positive workflows, estimating timelines, and selecting tasks to automate first.
+- [AI Automation for Indian SMBs: Where to Actually Start](https://airizz.co/blog/ai-automation-indian-smbs) - Insights on calculating time vs. money losses, integration priorities, and project scoping.
+- [Marketing Automation for Legal Firms in India](https://airizz.co/blog/marketing-automation-legal-firms) - Practical strategies to deploy automated response workflows, nurture sequences, and referral tracking for trust-based relationships.
+
+## Contact & Work Inquiries
+
+- [Get in Touch / Consultations](https://airizz.co/contact) - Book an operations audit or request a project quote.
+- [AI Project Cost Estimator](https://airizz.co/estimate) - Use our weighted scoring engine to get instant cost and timeline estimates for your automation needs.
+- [Careers at AIRIZZ](https://airizz.co/careers) - Open engineering and prompt developer roles.
+- [Pricing Structure](https://airizz.co/pricing) - Transparent tiers for consulting, custom integrations, and Cusfi license deployment.

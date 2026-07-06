@@ -65,6 +65,59 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "AIRIZZ",
+    "url": "https://airizz.co",
+    "logo": "https://airizz.co/logo.png",
+    "description": "Indian AI consulting, workflow automation, and custom LLM solutions. Scale your revenue and automate standard operating procedures.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "hello@airizz.co"
+    }
+  };
+
+  const localBusinessSchema = {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "AIRIZZ",
+    "image": "https://airizz.co/logo.png",
+    "@id": "https://airizz.co/#localbusiness",
+    "url": "https://airizz.co",
+    "telephone": "+91 900005 00010",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Enterprise HQ",
+      "addressLocality": "Bangalore",
+      "addressRegion": "Karnataka",
+      "postalCode": "560001",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 12.9716,
+      "longitude": 77.5946
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/airizz",
+      "https://twitter.com/airizz"
+    ]
+  };
+
   return (
     <html
       lang="en"
@@ -75,6 +128,14 @@ export default function RootLayout({
         className="min-h-full flex flex-col bg-bg text-text font-sans selection:bg-accent/30 selection:text-text"
         suppressHydrationWarning
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+        />
         <ScrollProvider>
           <Navbar />
           <main className="flex-grow pt-[73px] md:pt-[88px] flex flex-col">

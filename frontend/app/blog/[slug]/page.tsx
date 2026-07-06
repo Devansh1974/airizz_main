@@ -33,41 +33,76 @@ export async function generateStaticParams() {
   }));
 }
 
+function renderInlineMarkdown(text: string) {
+  // Regex to split on bold text **...** and links [...](...)
+  const regex = /(\*\*.*?\*\*|\[.*?\]\(.*?\))/g;
+  const matches = text.split(regex);
+  
+  return matches.map((part, i) => {
+    if (part.startsWith("**") && part.endsWith("**")) {
+      return <strong key={i} className="font-semibold text-text">{part.slice(2, -2)}</strong>;
+    }
+    if (part.startsWith("[") && part.includes("](")) {
+      const match = part.match(/\[(.*?)\]\((.*?)\)/);
+      if (match) {
+        const [, linkText, url] = match;
+        const isInternal = url.startsWith("/") || url.includes("airizz.co");
+        const href = url.replace(/https?:\/\/(www\.)?airizz\.co/, "");
+        const finalHref = href === "" ? "/" : href;
+        if (isInternal) {
+          return (
+            <Link key={i} href={finalHref} className="text-accent hover:underline font-semibold">
+              {linkText}
+            </Link>
+          );
+        } else {
+          return (
+            <a key={i} href={url} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-semibold">
+              {linkText}
+            </a>
+          );
+        }
+      }
+    }
+    return part;
+  });
+}
+
 function parseMarkdown(text: string) {
   return text.split("\n").map((line, index) => {
     const trimmed = line.trim();
     if (trimmed.startsWith("### ")) {
       return (
         <h3 key={index} className="text-[17px] font-semibold text-text mt-8 mb-3 font-sans">
-          {trimmed.replace("### ", "")}
+          {renderInlineMarkdown(trimmed.replace("### ", ""))}
         </h3>
       );
     }
     if (trimmed.startsWith("## ")) {
       return (
         <h2 key={index} className="text-lg font-semibold text-text mt-10 mb-4 border-b border-border pb-2 font-sans">
-          {trimmed.replace("## ", "")}
+          {renderInlineMarkdown(trimmed.replace("## ", ""))}
         </h2>
       );
     }
     if (trimmed.startsWith("# ")) {
       return (
         <h1 key={index} className="text-[22px] font-semibold text-text mt-12 mb-6 font-sans">
-          {trimmed.replace("# ", "")}
+          {renderInlineMarkdown(trimmed.replace("# ", ""))}
         </h1>
       );
     }
     if (trimmed.startsWith("- ")) {
       return (
         <li key={index} className="text-xs text-text-2 ml-4 list-disc mb-2 leading-relaxed font-sans">
-          {trimmed.substring(2)}
+          {renderInlineMarkdown(trimmed.substring(2))}
         </li>
       );
     }
     if (/^\d+\.\s/.test(trimmed)) {
       return (
         <li key={index} className="text-xs text-text-2 ml-4 list-decimal mb-2 leading-relaxed font-sans">
-          {trimmed.replace(/^\d+\.\s/, "")}
+          {renderInlineMarkdown(trimmed.replace(/^\d+\.\s/, ""))}
         </li>
       );
     }
@@ -76,7 +111,7 @@ function parseMarkdown(text: string) {
     }
     return (
       <p key={index} className="text-xs text-text-2 leading-relaxed mb-4 font-sans">
-        {trimmed}
+        {renderInlineMarkdown(trimmed)}
       </p>
     );
   });
@@ -90,8 +125,36 @@ export default async function BlogPostPage({ params }: PageProps) {
     notFound();
   }
 
+  const postSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.description || post.excerpt,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Person",
+      "name": post.author || "AIRIZZ Team"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AIRIZZ",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://airizz.co/logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://airizz.co/blog/${slug}`
+    }
+  };
+
   return (
     <div className="bg-bg text-text py-16 md:py-24 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(postSchema) }}
+      />
       <div className="max-w-6xl mx-auto px-6">
         {/* Back Link */}
         <FadeUp delay={0.1} className="mb-8">
